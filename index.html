@@ -72,6 +72,35 @@ CSS
         border-color: rgba(239, 68, 68, 0.3);
     }
     
+    .nav-menu {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .nav-link {
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 6px;
+        color: #a1a1aa;
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #e4e4e7;
+    }
+    
+    .nav-link.active {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.3);
+        color: #60a5fa;
+    }
+    
     .update-info {
         font-size: 12px;
         color: #71717a;
@@ -396,8 +425,12 @@ hero-title {
             <div class="logo">
                 Space Industry <span class="logo-highlight">Intelligence</span>
             </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="companies.html" class="nav-link">Companies</a>
+            </nav>
             <div class="update-info">
-                Last Updated: 31 October 2025
+                Last Updated: 9 November 2025
             </div>
         </div>
     </div>
@@ -1305,175 +1338,92 @@ Markup
             <div class="section-description">Government Programs, Private Capital & Strategic Initiatives</div>
         </div>
         
-        <div class="grid-2">
+        <div class="timeline">
             <div class="event-card">
                 <div class="event-header">
                     <div class="event-meta">
-                        <span class="company-badge">Small Satellites</span>
-                        <span class="country-badge collab">Collaboration</span>
+                        <span class="company-badge">Australia Space Infrastructure Fund</span>
+                        <span class="country-badge aus">Australia</span>
                     </div>
+                    <div class="event-date">2023-2027</div>
                 </div>
-                <div class="event-title">Joint Small Satellite Development (<100kg)</div>
+                <div class="event-title">$19.5M Space Infrastructure Fund</div>
                 <div class="event-content">
-                    Priority collaboration area for <span class="highlight">surveillance and reconnaissance satellites</span>. Korea's 3-year small satellite lifespan creates need for international partnership.
-Markup
-
-
-Australia's <span class="highlight">Earth Observation from Space Roadmap</span> emphasizes international collaboration to strengthen manufacturing capabilities. Joint development builds domestic infrastructure and skills in both nations. Surveillance targeting North Korea's nuclear capabilities provides mutual security benefits.
+                    Australian Government's dedicated fund supporting space industry infrastructure development. Focus on ground infrastructure, manufacturing capabilities, and mission support systems. Available for SMEs and startups to build sovereign capabilities.
                 </div>
             </div>
 
             <div class="event-card">
                 <div class="event-header">
                     <div class="event-meta">
-                        <span class="company-badge">Launch Infrastructure</span>
-                        <span class="country-badge collab">Collaboration</span>
+                        <span class="company-badge">National Reconstruction Fund</span>
+                        <span class="country-badge aus">Australia</span>
                     </div>
+                    <div class="event-date">2023-2033</div>
                 </div>
-                <div class="event-title">Permanent Korean Launch Site in Australia</div>
+                <div class="event-title">$15B for Critical Technologies</div>
                 <div class="event-content">
-                    Proposed <span class="highlight">dedicated Korean launch site in Northern Australia</span> leveraging equatorial proximity for lower launch costs. Australia's <span class="highlight">Arnhem Space Centre expanding to 300 hectares</span>. Streamlined regulatory arrangements for launch permits, export licenses, and cross-border rocket movement. Korean investment would benefit local Australian economies while providing Seoul strategic launch capabilities distant from potential threats.
+                    <span class="highlight">$15 billion National Reconstruction Fund</span> with allocation for enabling technologies including space-related capabilities. Supporting advanced manufacturing, quantum technologies, AI, and robotics relevant to space sector.
                 </div>
             </div>
 
             <div class="event-card">
                 <div class="event-header">
                     <div class="event-meta">
-                        <span class="company-badge">Space Situational Awareness</span>
-                        <span class="country-badge collab">Collaboration</span>
+                        <span class="company-badge">KASA Budget Growth</span>
+                        <span class="country-badge kor">Korea</span>
                     </div>
+                    <div class="event-date">2023-2027</div>
                 </div>
-                <div class="event-title">Joint SSA & Space Traffic Management</div>
+                <div class="event-title">₩874.2B Space Budget (+19.5% YoY)</div>
                 <div class="event-content">
-                    Increased collaboration in <span class="highlight">space security as operational warfighting domain</span>. Integration of <span class="highlight">EOS Mt Stromlo and Learmonth tracking systems</span> with Korean SSA networks. HEO's Non-Earth Imaging capabilities complement Korean space surveillance. Building resilient Indo-Pacific space domain awareness architecture against counterspace operations and cyber threats.
+                    2023 space budget reached <span class="highlight">₩874.2 billion (+19.5%)</span>. KASA 2025 R&D budget: <span class="highlight">₩806B (+43%)</span>, targeting ₩1.5T by 2027. Government-private matching space fund doubled. Aggressive investment supporting Top 5 space power ambition.
                 </div>
             </div>
 
             <div class="event-card">
                 <div class="event-header">
                     <div class="event-meta">
-                        <span class="company-badge">Launch Vehicle Technology</span>
-                        <span class="country-badge collab">Collaboration</span>
+                        <span class="company-badge">KSLV-III Program</span>
+                        <span class="country-badge kor">Korea</span>
                     </div>
+                    <div class="event-date">2025-2032</div>
                 </div>
-                <div class="event-title">KSLV-III Component Integration Opportunities</div>
+                <div class="event-title">₩2.1T Investment in Reusable Launch Vehicle</div>
                 <div class="event-content">
-                    Australian technologies for <span class="highlight">KSLV-III reusable launch vehicle</span>: Conflux Technology's 3D-printed heat exchangers, Advanced Navigation's precision guidance systems, MOOG's satellite control systems, and Neumann Space's electric propulsion. Bilateral technology transfer and co-development reducing costs and accelerating development timelines.
+                    <span class="highlight">₩2.1 trillion investment through 2032</span> for KSLV-III reusable launch vehicle development. Hanwha Aerospace prime contractor. First launch 2030, targeting 20+ launches annually by 2035. Major R&D investment in propulsion, materials, guidance systems.
                 </div>
             </div>
 
             <div class="event-card">
                 <div class="event-header">
                     <div class="event-meta">
-                        <span class="company-badge">Lunar Exploration</span>
-                        <span class="country-badge collab">Collaboration</span>
+                        <span class="company-badge">Moon to Mars Initiative</span>
+                        <span class="country-badge aus">Australia</span>
                     </div>
+                    <div class="event-date">2021-2030</div>
                 </div>
-                <div class="event-title">2032 Lunar Lander Collaboration</div>
+                <div class="event-title">Supply Chain Capability Grants</div>
                 <div class="event-content">
-                    Australia's <span class="highlight">Roo-ver technology and remote asset management expertise</span> for Korea's 2032 lunar lander mission. Australian strengths in <span class="highlight">robotics, autonomous systems, and harsh environment operations</span> (mining sector) complement Korean spacecraft capabilities.
-Markup
-
-
-Both nations participating in NASA Artemis program enables trilateral cooperation framework.
+                    Australian Space Agency's Moon to Mars Supply Chain Capability Improvement Grant program. Supporting companies like HEO (Holmes imager - $700K+), developing technologies for lunar and deep space missions. Building sovereign lunar exploration capabilities.
                 </div>
             </div>
 
             <div class="event-card">
                 <div class="event-header">
                     <div class="event-meta">
-                        <span class="company-badge">Earth Observation</span>
-                        <span class="country-badge collab">Collaboration</span>
+                        <span class="company-badge">Private Sector Investment</span>
+                        <span class="country-badge aus">Australia</span>
                     </div>
+                    <div class="event-date">2019-2023</div>
                 </div>
-                <div class="event-title">Data Sharing & AI Analytics Platform</div>
+                <div class="event-title">$1.1B Private Capital Since 2019</div>
                 <div class="event-content">
-                    Integration of <span class="highlight">Digital Earth Australia</span> with Korean KOMPSAT and reconnaissance satellite data. Joint AI-powered analytics for agriculture, climate change, disaster management, and defense applications. Could revive Australia's cancelled National Space Mission for Earth Observation at lower cost through collaboration. LatConnect 60 AI technology partnership opportunities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Communications</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Next-Gen Satellite Communications</div>
-                <div class="event-content">
-                    Korean telecommunications leadership with Australian satellite communications infrastructure. <span class="highlight">EM Solutions' King Cobra terminals</span> integration with Korean LEO constellations. Joint development of <span class="highlight">direct-to-mobile 5G/6G services, optical communications, and quantum secure communications</span>. SmartSat CRC high-speed communication terminal technology collaboration.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Critical Technologies</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">AUKUS Pillar 2 Cooperation Potential</div>
-                <div class="event-content">
-                    Australia, US, and UK expressed interest in exploring <span class="highlight">Korea joining AUKUS Pillar 2</span> for advanced capability cooperation. Would facilitate smoother export controls and strategic goods flow for satellite development and launch collaboration. Korea ranks highly in satellite-related research per ASPI Critical Technology Tracker. Joint leadership in defense-relevant technologies: AI, quantum computing, advanced materials.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Investment</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Cross-Border Venture Capital & Startups</div>
-                <div class="event-content">
-                    Link Australia's <span class="highlight">Space Infrastructure Fund ($19.5M)</span> with Korea's government-private matching space fund (doubled by 2027). Support bilateral startup market entry and technology partnerships. Joint investment in emerging space technologies. Creating Indo-Pacific space innovation ecosystem.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Supply Chain</span>
-Markup
-
-
-<span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Critical Minerals & Space Manufacturing</div>
-                <div class="event-content">
-                    Australia's <span class="highlight">critical minerals capabilities</span> (lithium, rare earths, nickel) with Korea's <span class="highlight">advanced manufacturing capacity</span>. Space-qualified component manufacturing leveraging Korean expertise in electronics and materials science. Resilient supply chains countering Chinese economic coercion that both nations have experienced.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Workforce</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Talent Exchange & Training Programs</div>
-                <div class="event-content">
-                    Bilateral <span class="highlight">internship and researcher exchange programs</span> between Australian Space Agency and KASA. STEM education collaboration leveraging 60+ years of scientific partnership. Joint space mission simulation and training. People-to-people links pillar of Comprehensive Strategic Partnership creating sustained cooperation framework.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Regional Leadership</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Indo-Pacific Middle Powers Alliance</div>
-                <div class="event-content">
-                    Both nations as <span class="highlight">"middle powers" demonstrating flexible, agile alliance</span> can shape regional security and technological innovation. Template for Indo-Pacific allies developing <span class="highlight">dual-use capabilities, enhanced deterrence, and economic growth</span> via space cooperation. Building regional resilience through control of critical infrastructure, supply chains, and space-based data. Partnership positioned as proactive response to growing counterspace threat landscape.
+                    <span class="highlight">$1.1 billion private sector investment</span> since 2019 driving Australian space industry growth. Venture capital, strategic investments, and international partnerships accelerating. Companies like Fleet Space, Gilmour Space securing major rounds.
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- KEY COMPANIES DIRECTORY -->
     <section class="section">
         <div class="section-header">

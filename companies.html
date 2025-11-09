@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Directory - Australia-Korea Space Industry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #0a0e1a;
+        color: #e4e4e7;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    
+    .top-bar {
+        background: rgba(10, 14, 26, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+    }
+    
+    .top-bar-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.5px;
+    }
+    
+    .logo-highlight {
+        color: #3b82f6;
+    }
+    
+    .nav-menu {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .nav-link {
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 6px;
+        color: #a1a1aa;
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #e4e4e7;
+    }
+    
+    .nav-link.active {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.3);
+        color: #60a5fa;
+    }
+    
+    .update-info {
+        font-size: 12px;
+        color: #71717a;
+    }
+    
+    .hero {
+        padding: 80px 40px 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+        font-size: 20px;
+        color: #a1a1aa;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px 80px;
+    }
+    
+    .section {
+        margin-bottom: 80px;
+    }
+    
+    .section-header {
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    .section-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+    }
+    
+    .section-description {
+        font-size: 15px;
+        color: #71717a;
+        font-weight: 400;
+    }
+    
+    .company-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        gap: 24px;
+    }
+    
+    @media (max-width: 1024px) {
+        .company-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .company-card {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 32px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .company-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .company-card:hover {
+        border-color: rgba(59, 130, 246, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .company-card:hover::before {
+        opacity: 1;
+    }
+    
+    .company-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .company-name {
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+    
+    .company-tagline {
+        font-size: 14px;
+        color: #60a5fa;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    
+    .country-badge {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 1px solid;
+    }
+    
+    .country-badge.aus {
+        background: rgba(34, 197, 94, 0.1);
+        color: #4ade80;
+        border-color: rgba(34, 197, 94, 0.2);
+    }
+    
+    .country-badge.kor {
+        background: rgba(168, 85, 247, 0.1);
+        color: #c084fc;
+        border-color: rgba(168, 85, 247, 0.2);
+    }
+    
+    .company-description {
+        font-size: 15px;
+        color: #a1a1aa;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+    
+    .company-info {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    .info-row {
+        display: flex;
+        margin-bottom: 12px;
+        gap: 12px;
+    }
+    
+    .info-label {
+        font-size: 13px;
+        color: #71717a;
+        font-weight: 600;
+        min-width: 120px;
+    }
+    
+    .info-value {
+        font-size: 13px;
+        color: #e4e4e7;
+        flex: 1;
+    }
+    
+    .highlight {
+        color: #60a5fa;
+        font-weight: 600;
+    }
+    
+    .capabilities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+    }
+    
+    .capability-tag {
+        padding: 4px 12px;
+        background: rgba(59, 130, 246, 0.1);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 40px;
+        text-align: center;
+        color: #71717a;
+        font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+        .hero {
+            padding: 40px 20px 30px;
+        }
+        
+        .hero-title {
+            font-size: 32px;
+        }
+        
+        .hero-subtitle {
+            font-size: 16px;
+        }
+        
+        .container {
+            padding: 0 20px 40px;
+        }
+        
+        .company-card {
+            padding: 24px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="logo">
+                Space Industry <span class="logo-highlight">Intelligence</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="companies.html" class="nav-link active">Companies</a>
+            </nav>
+            <div class="update-info">
+                Last Updated: 9 November 2025
+            </div>
+        </div>
+    </div>
+
+<div class="hero">
+    <div class="hero-title">Company Directory</div>
+    <div class="hero-subtitle">Comprehensive profiles of key players in Australia-Korea space cooperation</div>
+</div>
+
+<div class="container">
+    <!-- AUSTRALIAN COMPANIES -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-title">🇦🇺 Australian Space Companies</div>
+            <div class="section-description">Leading Australian space industry players and technology providers</div>
+        </div>
+        
+        <div class="company-grid">
+            <!-- HEO -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">HEO</div>
+                        <div class="company-tagline">Non-Earth Imaging & Space Domain Awareness</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    HEO is a pioneer in Non-Earth Imaging (NEI) technology, providing advanced space domain awareness capabilities. The company develops specialized camera systems that monitor satellites and space objects from other satellites, creating a new paradigm for space surveillance.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Key Products:</div>
+                        <div class="info-value">Adler Imager, Holmes Imager</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Recent Milestone:</div>
+                        <div class="info-value">7-figure deal with BlackSky (2024), Holmes launched on Transporter-12 (Jan 2025)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Funding:</div>
+                        <div class="info-value">$700K+ Moon to Mars Grant</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Future Plans:</div>
+                        <div class="info-value">Adler Imager on Optus LEO satellite (2028)</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Space Surveillance</span>
+                    <span class="capability-tag">Satellite Tracking</span>
+                    <span class="capability-tag">NEI Cameras</span>
+                    <span class="capability-tag">SSA</span>
+                </div>
+            </div>
+
+            <!-- EOS Space Systems -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">EOS Space Systems</div>
+                        <div class="company-tagline">Optical Surveillance & Laser Tracking</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    EOS operates world-leading optical surveillance and laser tracking facilities for space situational awareness. With advanced systems at Mt Stromlo (ACT) and Learmonth (WA), EOS provides daylight tracking, high-energy laser ranging, and debris monitoring capabilities critical for space security.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Facilities:</div>
+                        <div class="info-value">Mt Stromlo (ACT), Learmonth (WA)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Awards:</div>
+                        <div class="info-value">2025 Australian Space Awards - Business of the Year (Large) & SSA Program of the Year</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Defence Contract:</div>
+                        <div class="info-value">$9M ADF contract (Sep 2024)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Technologies:</div>
+                        <div class="info-value">High-energy lasers, optical surveillance, tracking systems</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">SSA</span>
+                    <span class="capability-tag">Laser Tracking</span>
+                    <span class="capability-tag">Debris Monitoring</span>
+                    <span class="capability-tag">Optical Communications</span>
+                </div>
+            </div>
+
+            <!-- Gilmour Space Technologies -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Gilmour Space Technologies</div>
+                        <div class="company-tagline">Launch Vehicle Development</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Gilmour Space is developing the Eris orbital launch vehicle from Queensland facilities, positioning Australia as a sovereign launch nation. The company's partnership with Hanwha Defence Australia and Hanwha Aerospace (Sep 2024) aims to integrate Korean payloads and establish collaborative launch services in the Indo-Pacific region.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Launch Vehicle:</div>
+                        <div class="info-value">Eris (orbital-class rocket)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Launch Site:</div>
+                        <div class="info-value">Queensland orbital launch facilities</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Partnership:</div>
+                        <div class="info-value">Hanwha MoU (Sep 2024) for joint launches</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Goal:</div>
+                        <div class="info-value">Indigenous Australian orbital launch capability</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Launch Vehicles</span>
+                    <span class="capability-tag">Propulsion</span>
+                    <span class="capability-tag">Launch Operations</span>
+                </div>
+            </div>
+
+            <!-- Equatorial Launch Australia -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Equatorial Launch Australia</div>
+                        <div class="company-tagline">Commercial Launch Services Provider</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Equatorial Launch Australia operates the <span class="highlight">Arnhem Space Centre</span> in Northern Territory, Australia's premier commercial spaceport. The facility's equatorial location provides significant launch cost advantages and safety benefits. ELA has secured multi-year contracts with Korean firm INNOSPACE for orbital launches starting 2025, positioning the site as a key Indo-Pacific launch hub.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Facility:</div>
+                        <div class="info-value">Arnhem Space Centre, Northern Territory (expanding to 300 hectares)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Location Advantage:</div>
+                        <div class="info-value">Near-equatorial position for lower launch costs</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Partnership:</div>
+                        <div class="info-value">Multi-year contract with INNOSPACE (Korea)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">First Launches:</div>
+                        <div class="info-value">INNOSPACE inaugural launches scheduled 2025</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Launch Infrastructure</span>
+                    <span class="capability-tag">Range Operations</span>
+                    <span class="capability-tag">Commercial Services</span>
+                    <span class="capability-tag">International Partnerships</span>
+                </div>
+            </div>
+
+            <!-- Southern Launch -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Southern Launch</div>
+                        <div class="company-tagline">Multi-Site Launch Services Provider</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Southern Launch operates two strategic launch sites in South Australia: Whalers Way Orbital Launch Complex for orbital missions and Koonibba Test Range for suborbital testing. The company provides comprehensive launch services for domestic and international customers, with proven experience hosting multiple successful launches and tests.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Launch Sites:</div>
+                        <div class="info-value">Whalers Way (orbital), Koonibba (suborbital test range)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Location:</div>
+                        <div class="info-value">South Australia</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Services:</div>
+                        <div class="info-value">Launch operations, testing facilities, range management</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Customers:</div>
+                        <div class="info-value">International and domestic launch vehicle providers</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Orbital Launch</span>
+                    <span class="capability-tag">Suborbital Testing</span>
+                    <span class="capability-tag">Range Operations</span>
+                    <span class="capability-tag">Launch Services</span>
+                </div>
+            </div>
+
+            <!-- Space Machines Company -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Space Machines Company</div>
+                        <div class="company-tagline">Orbital Servicing & Satellite Manufacturing</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Space Machines Company is pioneering orbital servicing capabilities with the Optimus Viper satellite platform. In partnership with University of Technology Sydney, the company established an industry-scale manufacturing facility capable of producing up to 20 satellites annually, demonstrating Australia's full-spectrum space manufacturing capability.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Key Product:</div>
+                        <div class="info-value">Optimus Viper orbital servicing satellites</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Manufacturing:</div>
+                        <div class="info-value">Industry-scale facility with UTS (20 satellites/year capacity)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Missions:</div>
+                        <div class="info-value">Space MAITRI mission, orbital transfer vehicles</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Capabilities:</div>
+                        <div class="info-value">In-orbit servicing, satellite deployment, orbital logistics</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Satellite Manufacturing</span>
+                    <span class="capability-tag">Orbital Services</span>
+                    <span class="capability-tag">Orbital Transfer</span>
+                    <span class="capability-tag">Space Logistics</span>
+                </div>
+            </div>
+
+            <!-- Fleet Space Technologies -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Fleet Space Technologies</div>
+                        <div class="company-tagline">IoT Satellite Network & Mineral Exploration</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Fleet Space operates a proprietary constellation of Centauri satellites providing global IoT connectivity and advanced geophysical data services. The company's next-generation satellites (Centauri 7 & 8 launched Jan 2025) support mineral exploration with cutting-edge seismic and electromagnetic survey capabilities, revolutionizing resource discovery.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Constellation:</div>
+                        <div class="info-value">Centauri satellites (7 & 8 launched Jan 2025)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Services:</div>
+                        <div class="info-value">Global IoT connectivity, geophysical data analytics</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Key Market:</div>
+                        <div class="info-value">Mining sector, mineral exploration</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Technology:</div>
+                        <div class="info-value">Advanced seismic/EM survey capabilities</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">IoT Constellation</span>
+                    <span class="capability-tag">Geophysics</span>
+                    <span class="capability-tag">Mineral Exploration</span>
+                    <span class="capability-tag">Earth Observation</span>
+                </div>
+            </div>
+
+            <!-- Conflux Technology -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Conflux Technology</div>
+                        <div class="company-tagline">Additive Manufacturing for Space Systems</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Conflux specializes in 3D-printed heat exchangers for rocket engines and space systems using advanced additive manufacturing techniques. The company's technology demonstrates spin-in/spin-out applications between space and terrestrial markets, reducing manufacturing costs while improving thermal management performance critical for launch vehicles.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Core Technology:</div>
+                        <div class="info-value">3D-printed heat exchangers</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Applications:</div>
+                        <div class="info-value">Rocket engines, thermal management systems</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Advantages:</div>
+                        <div class="info-value">Cost reduction, performance improvement, rapid iteration</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Relevance:</div>
+                        <div class="info-value">KSLV-III component integration opportunity</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Additive Manufacturing</span>
+                    <span class="capability-tag">Thermal Management</span>
+                    <span class="capability-tag">Rocket Components</span>
+                    <span class="capability-tag">Advanced Materials</span>
+                </div>
+            </div>
+
+            <!-- Advanced Navigation -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Advanced Navigation</div>
+                        <div class="company-tagline">Precision Navigation & Guidance Systems</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Advanced Navigation develops world-class GNSS/INS integrated navigation systems with exceptional precision. The company's products serve autonomous vehicles, maritime applications, drones, and space systems. Their precision guidance technology is relevant for Korea's KSLV-III reusable launch vehicle and satellite applications.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Products:</div>
+                        <div class="info-value">GNSS/INS integrated navigation systems</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Markets:</div>
+                        <div class="info-value">Autonomous vehicles, maritime, drones, space</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Technology:</div>
+                        <div class="info-value">Sensor fusion, inertial navigation, precision positioning</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Strategic Fit:</div>
+                        <div class="info-value">Australia's PNT priority area</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">PNT</span>
+                    <span class="capability-tag">Inertial Navigation</span>
+                    <span class="capability-tag">Sensor Fusion</span>
+                    <span class="capability-tag">Autonomous Systems</span>
+                </div>
+            </div>
+
+            <!-- Visionary Machines -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Visionary Machines</div>
+                        <div class="company-tagline">Computer Vision & Spatial Sensing</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Visionary Machines develops Vanguard spatial vision technology for autonomous systems and Pandion Sentinel counter-drone systems. With CIA venture capital backing and $4.4M government grant, the company is commercializing advanced 3D vision, multi-spectral cameras, and surveillance technologies for defense and security markets.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Key Products:</div>
+                        <div class="info-value">Pandion Sentinel (counter-drone), Vanguard spatial vision</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Funding:</div>
+                        <div class="info-value">$4.4M government grant + CIA venture capital (IQT)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Project Value:</div>
+                        <div class="info-value">$8.75M total with matched funding</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Leadership:</div>
+                        <div class="info-value">Sonny Foster (former Collins Aerospace MD) as CEO</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">3D Vision</span>
+                    <span class="capability-tag">Autonomous Navigation</span>
+                    <span class="capability-tag">Surveillance</span>
+                    <span class="capability-tag">Multi-Spectral Cameras</span>
+                </div>
+            </div>
+
+            <!-- Neumann Space -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Neumann Space</div>
+                        <div class="company-tagline">Electric Propulsion Systems</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Neumann Space pioneers the Neumann Drive® electric propulsion system using revolutionary solid metal propellant technology. The ND-50 achieved first European export (Jan 2025) integrated into ESA's EDISON satellite. This Australian innovation offers game-changing propulsion efficiency for satellites and space vehicles.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Product:</div>
+                        <div class="info-value">Neumann Drive® ND-50 electric propulsion</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Technology:</div>
+                        <div class="info-value">Solid metal propellant (unique approach)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Milestone:</div>
+                        <div class="info-value">First European export to ESA EDISON satellite (Jan 2025)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Applications:</div>
+                        <div class="info-value">Satellite maneuvering, orbital transfer, station-keeping</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Electric Propulsion</span>
+                    <span class="capability-tag">Satellite Systems</span>
+                    <span class="capability-tag">Novel Propellant</span>
+                    <span class="capability-tag">Orbital Mechanics</span>
+                </div>
+            </div>
+
+            <!-- EM Solutions -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">EM Solutions</div>
+                        <div class="company-tagline">Satellite Communications Terminals</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    EM Solutions manufactures advanced satellite communication terminals for defense and maritime applications. The King Cobra and Cobra terminal systems have secured $19M in orders (2024) from NATO navies and East Asian customers, demonstrating Australian excellence in SATCOM technology with potential for Korean LEO constellation integration.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Products:</div>
+                        <div class="info-value">King Cobra, Cobra satellite communication terminals</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Recent Orders:</div>
+                        <div class="info-value">$19M (2024) - NATO navies & East Asian customers</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Markets:</div>
+                        <div class="info-value">Defense, maritime, government</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Opportunity:</div>
+                        <div class="info-value">Integration with Korean LEO constellations</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">SATCOM Terminals</span>
+                    <span class="capability-tag">Maritime Communications</span>
+                    <span class="capability-tag">Defense Systems</span>
+                    <span class="capability-tag">RF Technology</span>
+                </div>
+            </div>
+
+            <!-- MOOG Australia -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">MOOG Australia</div>
+                        <div class="company-tagline">Satellite Control Systems</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    MOOG Australia provides critical satellite attitude control and propulsion systems, actuators, and precision mechanisms. As a key component supplier for space missions, MOOG's space-qualified hardware is essential for satellite operations and could contribute to Korea's KSLV-III and satellite programs.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Products:</div>
+                        <div class="info-value">Satellite ADCS, actuators, precision mechanisms</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Expertise:</div>
+                        <div class="info-value">Attitude control, propulsion systems</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Qualification:</div>
+                        <div class="info-value">Space-qualified hardware for demanding missions</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Global Presence:</div>
+                        <div class="info-value">Part of MOOG Inc. international network</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Satellite ADCS</span>
+                    <span class="capability-tag">Actuators</span>
+                    <span class="capability-tag">Precision Mechanisms</span>
+                    <span class="capability-tag">Space Hardware</span>
+                </div>
+            </div>
+
+            <!-- Insitu Pacific -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Insitu Pacific</div>
+                        <div class="company-tagline">Unmanned Aircraft Systems</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Insitu Pacific (Boeing subsidiary) operates the Integrator and ScanEagle unmanned aircraft systems for intelligence, surveillance, and reconnaissance (ISR). The company delivers operator training to Australian Army's 20 Regiment with high-fidelity simulators at Brisbane facilities, providing maritime domain awareness and autonomous systems expertise.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Products:</div>
+                        <div class="info-value">Integrator Tactical UAS, ScanEagle</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Parent Company:</div>
+                        <div class="info-value">Boeing</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Training:</div>
+                        <div class="info-value">Brisbane facility with operational hardware & simulators</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Customer:</div>
+                        <div class="info-value">Australian Army 20 Regiment</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">RPAS Operations</span>
+                    <span class="capability-tag">ISR</span>
+                    <span class="capability-tag">Maritime Domain Awareness</span>
+                    <span class="capability-tag">Autonomous Systems</span>
+                </div>
+            </div>
+
+            <!-- Skykraft -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Skykraft</div>
+                        <div class="company-tagline">Space-Based Air Traffic Management</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Skykraft is deploying a space-enabled air traffic management network using satellite constellation for global aircraft tracking and communications. Skykraft 4 launched from Vandenberg (July 2024) as part of the company's plan to deploy the network by 2026, strengthening Australia's leadership in space situational awareness and aviation safety.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Mission:</div>
+                        <div class="info-value">Space-based air traffic management network</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Recent Launch:</div>
+                        <div class="info-value">Skykraft 4 from Vandenberg (July 2024)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Deployment:</div>
+                        <div class="info-value">Full network operational by 2026</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Impact:</div>
+                        <div class="info-value">Global aircraft tracking, improved aviation safety</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Air Traffic Management</span>
+                    <span class="capability-tag">Satellite Constellation</span>
+                    <span class="capability-tag">Aircraft Tracking</span>
+                    <span class="capability-tag">Aviation Safety</span>
+                </div>
+            </div>
+
+            <!-- Arlula -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Arlula</div>
+                        <div class="company-tagline">Earth Observation Data Marketplace</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Arlula operates a unified Earth observation data marketplace connecting satellite imagery providers with customers globally. The platform democratizes access to satellite data through standardized APIs, enabling easy discovery, ordering, and integration of imagery from multiple satellite constellations for applications in agriculture, mining, defense, and environmental monitoring.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Platform:</div>
+                        <div class="info-value">API-based EO data marketplace</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Services:</div>
+                        <div class="info-value">Satellite imagery access, data integration, analytics</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Partners:</div>
+                        <div class="info-value">Multiple satellite constellation operators</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Opportunity:</div>
+                        <div class="info-value">Integration with Korean KOMPSAT data, Digital Earth Australia</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">EO Data Platform</span>
+                    <span class="capability-tag">API Integration</span>
+                    <span class="capability-tag">Data Marketplace</span>
+                    <span class="capability-tag">Analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KOREAN COMPANIES -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-title">🇰🇷 Korean Space Companies</div>
+            <div class="section-description">Leading Korean space industry players and technology providers</div>
+        </div>
+        
+        <div class="company-grid">
+            <!-- KARI -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">KARI (Korea Aerospace Research Institute)</div>
+                        <div class="company-tagline">National Space Research Institute</div>
+                    </div>
+                    <span class="country-badge kor">Korea</span>
+                </div>
+                <div class="company-description">
+                    KARI is Korea's primary space research institute, responsible for developing the Nuri (KSLV-II) launch vehicle and Danuri lunar orbiter. Successfully achieved indigenous launch capability with Nuri's 3rd launch (May 2023) and operates Korea's reconnaissance satellite constellation. KARI leads Korea's path to becoming a Top 5 global space power by 2030.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Key Achievements:</div>
+                        <div class="info-value">Nuri (KSLV-II) success, Danuri lunar orbiter, reconnaissance satellites</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Constellation:</div>
+                        <div class="info-value">5-satellite reconnaissance system (425Sat series)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Upcoming:</div>
+                        <div class="info-value">Nuri 4th launch 2025, 2032 lunar lander mission</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Collaboration:</div>
+                        <div class="info-value">Australia partnership opportunities in SSA, lunar exploration</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Launch Vehicles</span>
+                    <span class="capability-tag">Satellites</span>
+                    <span class="capability-tag">Lunar Exploration</span>
+                    <span class="capability-tag">Space R&D</span>
+                </div>
+            </div>
+
+            <!-- Hanwha Aerospace -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Hanwha Aerospace</div>
+                        <div class="company-tagline">KSLV-III Prime Contractor</div>
+                    </div>
+                    <span class="country-badge kor">Korea</span>
+                </div>
+                <div class="company-description">
+                    Hanwha Aerospace is the prime contractor for Korea's KSLV-III reusable launch vehicle with ₩2.1 trillion investment through 2032. The company's MoU with Gilmour Space Technologies (Sep 2024) establishes joint R&D and collaborative launches from Australian territory, positioning Hanwha as a key player in Indo-Pacific space cooperation.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Major Program:</div>
+                        <div class="info-value">KSLV-III reusable launch vehicle (₩2.1T investment)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Timeline:</div>
+                        <div class="info-value">First launch 2030, 20+ launches/year by 2035</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Partnership:</div>
+                        <div class="info-value">Gilmour Space MoU (Sep 2024) for Australian launches</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Capacity:</div>
+                        <div class="info-value">10+ tons to LEO</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Launch Vehicles</span>
+                    <span class="capability-tag">Reusable Rockets</span>
+                    <span class="capability-tag">Propulsion Systems</span>
+                    <span class="capability-tag">Defense Aerospace</span>
+                </div>
+            </div>
+
+            <!-- INNOSPACE -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">INNOSPACE</div>
+                        <div class="company-tagline">Commercial Launch Services</div>
+                    </div>
+                    <span class="country-badge kor">Korea</span>
+                </div>
+                <div class="company-description">
+                    INNOSPACE is Korea's leading commercial launch company with multi-year contract for orbital launches from Equatorial Launch Australia's Arnhem Space Centre. Inaugural launches scheduled for 2025 will mark a significant milestone in Korea-Australia space cooperation, leveraging Australia's equatorial advantage for cost-effective launches.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Launch Site:</div>
+                        <div class="info-value">Arnhem Space Centre, Australia (multi-year contract)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">First Launch:</div>
+                        <div class="info-value">2025</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Advantage:</div>
+                        <div class="info-value">Equatorial location benefits, international reach</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Significance:</div>
+                        <div class="info-value">First Korean commercial launches from Australia</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Commercial Launch</span>
+                    <span class="capability-tag">Small Satellites</span>
+                    <span class="capability-tag">Launch Operations</span>
+                    <span class="capability-tag">International Partnerships</span>
+                </div>
+            </div>
+
+            <!-- KASA -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">KASA (Korea AeroSpace Administration)</div>
+                        <div class="company-tagline">National Space Agency</div>
+                    </div>
+                    <span class="country-badge kor">Korea</span>
+                </div>
+                <div class="company-description">
+                    KASA is Korea's newly established space agency (2024) coordinating national space strategy and programs. With 2025 R&D budget of ₩806B (+43%) targeting ₩1.5T by 2027, KASA leads Korea's ambition to become Top 5 space power. The agency collaborates with NASA on LUSEM lunar environment monitor and coordinates bilateral cooperation with Australian Space Agency.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Budget Growth:</div>
+                        <div class="info-value">₩806B (2025), targeting ₩1.5T by 2027</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">International:</div>
+                        <div class="info-value">NASA partnership (LUSEM), Australian Space Agency MoU</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Headquarters:</div>
+                        <div class="info-value">New facility in Sacheon by 2030</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Goals:</div>
+                        <div class="info-value">Top 5 space power by 2030, manned spaceflight by 2045</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">Space Policy</span>
+                    <span class="capability-tag">Program Coordination</span>
+                    <span class="capability-tag">International Cooperation</span>
+                    <span class="capability-tag">R&D Funding</span>
+                </div>
+            </div>
+
+            <!-- MEMKO -->
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">MEMKO</div>
+                        <div class="company-tagline">MEMS & Precision Sensors</div>
+                    </div>
+                    <span class="country-badge kor">Korea</span>
+                </div>
+                <div class="company-description">
+                    MEMKO specializes in Micro-Electro-Mechanical Systems (MEMS) and precision sensors for aerospace and defense applications. The company's miniaturized sensor technologies are critical for satellite systems, inertial measurement units, and space-qualified instrumentation, offering potential collaboration with Australian navigation and sensor companies.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Technology:</div>
+                        <div class="info-value">MEMS sensors, precision instrumentation</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Applications:</div>
+                        <div class="info-value">Satellites, IMUs, guidance systems</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Markets:</div>
+                        <div class="info-value">Aerospace, defense, space systems</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Collaboration:</div>
+                        <div class="info-value">Synergy with Advanced Navigation, MOOG Australia</div>
+                    </div>
+                </div>
+                <div class="capabilities">
+                    <span class="capability-tag">MEMS Technology</span>
+                    <span class="capability-tag">Precision Sensors</span>
+                    <span class="capability-tag">IMUs</span>
+                    <span class="capability-tag">Space Instrumentation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOVERNMENT AGENCIES -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-title">🏛️ Government Agencies & Research Institutes</div>
+            <div class="section-description">Key organizations driving space policy and research</div>
+        </div>
+        
+        <div class="company-grid">
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">Australian Space Agency</div>
+                        <div class="company-tagline">National Space Coordination</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    Established in 2018, the Australian Space Agency coordinates national space activities and international cooperation. Key programs include Moon to Mars initiative, Space Infrastructure Fund ($19.5M), and strategic partnerships with Korea, US, and regional allies. The agency targets $12B industry size by 2030 with 30,000 space jobs.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Established:</div>
+                        <div class="info-value">2018</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Key Programs:</div>
+                        <div class="info-value">Moon to Mars, Space Infrastructure Fund, Earth Observation</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">International:</div>
+                        <div class="info-value">MoU with Korea (Dec 2021), NASA Artemis partnership</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Targets:</div>
+                        <div class="info-value">$12B industry by 2030, 30,000 jobs</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="company-card">
+                <div class="company-header">
+                    <div>
+                        <div class="company-name">SmartSat CRC</div>
+                        <div class="company-tagline">Cooperative Research Centre</div>
+                    </div>
+                    <span class="country-badge aus">Australia</span>
+                </div>
+                <div class="company-description">
+                    SmartSat Cooperative Research Centre brings together industry, government, and universities for advanced satellite technology R&D. Focus areas include high-speed communications, AI-powered analytics, Earth observation, and next-generation satellite systems with opportunities for Korea collaboration in 5G/6G and optical communications.
+                </div>
+                <div class="company-info">
+                    <div class="info-row">
+                        <div class="info-label">Focus:</div>
+                        <div class="info-value">Advanced satellite technologies, communications, AI</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Structure:</div>
+                        <div class="info-value">Industry-government-university collaboration</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Technologies:</div>
+                        <div class="info-value">High-speed comms terminals, EO analytics, quantum</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Opportunity:</div>
+                        <div class="info-value">5G/6G integration with Korean telecom leadership</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="footer">
+    <div style="font-weight: 600; margin-bottom: 12px; color: #a1a1aa;">Company Directory - Space Industry Intelligence Platform</div>
+    <p style="margin-top: 8px; line-height: 1.8;">
+        Intelligence compiled from official company announcements, government releases, 
+        Australian Space Agency, Korea AeroSpace Administration (KASA), and verified industry publications.
+    </p>
+    <p style="margin-top: 20px; color: #52525b; font-size: 13px;">
+        Business Development | Strategic Partnership Intelligence
+    </p>
+</div>
+
+<script>
+    // Smooth fade-in animation on load
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.company-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 30);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    });
+</script>
+
+</body>
+</html>
