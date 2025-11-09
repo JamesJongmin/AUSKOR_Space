@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technologies - Space Industry Intelligence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #0a0e1a;
+        color: #e4e4e7;
+        line-height: 1.6;
+        overflow-x: hidden;
+        display: flex;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        width: 260px;
+        background: rgba(15, 23, 42, 0.95);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding: 24px 0;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    
+    .sidebar-logo {
+        padding: 0 20px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 20px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.3px;
+    }
+    
+    .logo-highlight {
+        color: #3b82f6;
+    }
+    
+    .sidebar-nav {
+        padding: 0 12px;
+    }
+    
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        margin-bottom: 4px;
+        border-radius: 8px;
+        color: #a1a1aa;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #e4e4e7;
+    }
+    
+    .nav-item.active {
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    
+    .nav-icon {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+    
+    /* Main Content */
+    .main-content {
+        margin-left: 260px;
+        flex: 1;
+        min-height: 100vh;
+    }
+    
+    .top-bar {
+        background: rgba(10, 14, 26, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 16px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+    }
+    
+    .page-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+    }
+    
+    .update-info {
+        font-size: 12px;
+        color: #71717a;
+        margin-top: 4px;
+    }
+    
+    .hero {
+        padding: 60px 40px 40px;
+    }
+    
+    .hero-title {
+        font-size: 42px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+        color: #a1a1aa;
+        margin-bottom: 32px;
+    }
+    
+    .container {
+        padding: 0 40px 80px;
+    }
+    
+    .section {
+        margin-bottom: 60px;
+    }
+    
+    .section-header {
+        margin-bottom: 28px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    .section-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+    
+    .section-description {
+        font-size: 14px;
+        color: #71717a;
+    }
+    
+    .timeline {
+        display: grid;
+        gap: 18px;
+    }
+    
+    .event-card {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 24px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .event-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .event-card:hover {
+        border-color: rgba(59, 130, 246, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .event-card:hover::before {
+        opacity: 1;
+    }
+    
+    .event-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .event-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .company-badge {
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        padding: 5px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .country-badge {
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        border: 1px solid;
+    }
+    
+    .country-badge.aus {
+        background: rgba(34, 197, 94, 0.1);
+        color: #4ade80;
+        border-color: rgba(34, 197, 94, 0.2);
+    }
+    
+    .country-badge.kor {
+        background: rgba(168, 85, 247, 0.1);
+        color: #c084fc;
+        border-color: rgba(168, 85, 247, 0.2);
+    }
+    
+    .event-date {
+        color: #71717a;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .event-title {
+        font-size: 17px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    .event-content {
+        font-size: 14px;
+        color: #a1a1aa;
+        line-height: 1.7;
+    }
+    
+    .highlight {
+        color: #e4e4e7;
+        font-weight: 500;
+    }
+    
+    @media (max-width: 1024px) {
+        .sidebar {
+            transform: translateX(-100%);
+        }
+        
+        .main-content {
+            margin-left: 0;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-text">Space Industry <span class="logo-highlight">Intelligence</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                Dashboard
+            </a>
+            <a href="overview.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                Overview & Roadmap
+            </a>
+            <a href="trends.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                Global Trends
+            </a>
+            <a href="partnerships.html" class="nav-item">
+                <span class="nav-icon">🤝</span>
+                Partnerships
+            </a>
+            <a href="technologies.html" class="nav-item active">
+                <span class="nav-icon">🔬</span>
+                Technologies
+            </a>
+            <a href="investment.html" class="nav-item">
+                <span class="nav-icon">💰</span>
+                Investment
+            </a>
+            <a href="companies.html" class="nav-item">
+                <span class="nav-icon">🏢</span>
+                Companies
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">Technologies & Capabilities</div>
+            <div class="update-info">Last Updated: 9 November 2025</div>
+        </div>
+
+        <div class="hero">
+            <div class="hero-title">Space Technologies & Capabilities</div>
+            <div class="hero-subtitle">Upstream, Midstream & Downstream Solutions</div>
+        </div>
+
+        <div class="container">
+            <!-- UPSTREAM -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">🚀 Upstream: Launch Vehicles & Satellites</div>
+                    <div class="section-description">Manufacturing, Assembly, Testing & Launch Systems</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">KARI / Hanwha Aerospace</span>
+                                <span class="country-badge kor">Korea</span>
+                            </div>
+                            <div class="event-date">February 2025</div>
+                        </div>
+                        <div class="event-title">KSLV-III Reusable Launch Vehicle Approved</div>
+                        <div class="event-content">
+                            Korea's National Space Council approved plans to develop <span class="highlight">KSLV-III as a reusable launch vehicle</span> by 2035. First launch scheduled for 2030 with 10+ tons to LEO capacity. Target of 20+ launches annually from 2035. Hanwha Aerospace selected as prime contractor with ₩2.1 trillion investment through 2032.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">KARI</span>
+                                <span class="country-badge kor">Korea</span>
+                            </div>
+                            <div class="event-date">April 2025</div>
+                        </div>
+                        <div class="event-title">4th Reconnaissance Satellite Launched</div>
+                        <div class="event-content">
+                            <span class="highlight">425Sat-3 SAR satellite</span> launched via SpaceX Falcon 9. Building 5-satellite constellation for 2-hour surveillance cycle of North Korea. First spy satellite launched December 2023, rapidly expanding indigenous reconnaissance capabilities.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Space Machines Company</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">2025</div>
+                        </div>
+                        <div class="event-title">Satellite Manufacturing Facility with UTS</div>
+                        <div class="event-content">
+                            Partnership with University of Technology Sydney to establish industry-scale facility for manufacturing <span class="highlight">Optimus Viper orbital servicing satellites</span>. Target production of up to 20 satellites annually. Demonstrates Australia's full-spectrum space manufacturing capability.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Fleet Space Technologies</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">January 2025</div>
+                        </div>
+                        <div class="event-title">Centauri 7 & 8 Satellites Deployed</div>
+                        <div class="event-content">
+                            Next-generation <span class="highlight">Centauri satellites</span> launched on SpaceX Transporter-12. Expanding proprietary satellite network for mineral exploration services. Advanced IoT and geophysical data capabilities supporting mining sector.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Conflux Technology</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">3D-Printed Rocket Heat Exchangers</div>
+                        <div class="event-content">
+                            Developing <span class="highlight">advanced 3D-printed heat exchangers</span> for rocket engines using additive manufacturing. Demonstrating spin-in/spin-out technology between space and terrestrial applications. Reducing manufacturing costs while improving performance.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MIDSTREAM -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">🛰️ Midstream: Launch Services & Ground Infrastructure</div>
+                    <div class="section-description">Launch Operations, Ground Stations, Mission Control, TT&C</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">EOS Space Systems</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">June 2025</div>
+                        </div>
+                        <div class="event-title">2025 Australian Space Awards Winner</div>
+                        <div class="event-content">
+                            Won <span class="highlight">Business of the Year (Large)</span> and <span class="highlight">Space Situational Awareness Program of the Year</span>. Operating advanced tracking systems at Mt Stromlo (ACT) and Learmonth (WA) with daylight tracking and high-energy laser ranging capabilities.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">EOS Space Systems</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">September 2024</div>
+                        </div>
+                        <div class="event-title">$9M Defence Space Capabilities Contract</div>
+                        <div class="event-content">
+                            Secured contract with Australian Defence Force Joint Capabilities Division to develop space capabilities. Leveraging <span class="highlight">optical surveillance and high-energy laser technologies</span> for space domain awareness. Delivery scheduled for 2H 2024 and 2025.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Skykraft</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">July 2024</div>
+                        </div>
+                        <div class="event-title">Skykraft 4 Launched from Vandenberg</div>
+                        <div class="event-content">
+                            Successfully launched from California's Vandenberg Space Force Base. Part of plan to deploy <span class="highlight">space-enabled air traffic management network</span> by 2026. Strengthening Australia's global leadership in space situational awareness.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">EM Solutions</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">2024</div>
+                        </div>
+                        <div class="event-title">$19M Satellite Communications Orders</div>
+                        <div class="event-content">
+                            Follow-on orders from European NATO Navy for 6 additional <span class="highlight">King Cobra satellite communication terminals</span> ($10M). New East Asian Navy customer ordered 4 Cobra terminals ($4M). Supporting continued growth in maritime SATCOM.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOWNSTREAM -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">📡 Downstream: Applications & Services</div>
+                    <div class="section-description">Earth Observation, Navigation, Communications, Data Analytics</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">HEO</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">7-Figure Deal with BlackSky for Non-Earth Imaging</div>
+                        <div class="event-content">
+                            Secured multi-million dollar contract to access excess capacity of BlackSky's Gen-2 satellites for <span class="highlight">Non-Earth Imaging (NEI)</span>. Enhancing space object monitoring and space domain awareness capabilities. HEO's Adler Imager to be deployed on Optus LEO satellite in 2028.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Visionary Machines</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">2024</div>
+                        </div>
+                        <div class="event-title">$4.4M Government Grant for Counter-Drone Tech</div>
+                        <div class="event-content">
+                            Awarded Industry Growth Program grant to commercialize <span class="highlight">Pandion Sentinel counter-drone system</span>. Total project investment of $8.75M with matched funding. Scaling Sydney manufacturing capabilities for defense and security markets.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Advanced Navigation</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">Precision Navigation Systems for Global Markets</div>
+                        <div class="event-content">
+                            Developing and supplying <span class="highlight">GNSS/INS integrated navigation systems</span> with world-class precision. Applications in autonomous vehicles, drones, and maritime sectors. Contributing to Australia's Position, Navigation & Timing priority.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Danuri / KARI</span>
+                                <span class="country-badge kor">Korea</span>
+                            </div>
+                            <div class="event-date">2022-2025</div>
+                        </div>
+                        <div class="event-title">Danuri Lunar Orbiter Ongoing Mission</div>
+                        <div class="event-content">
+                            Launched August 2022, <span class="highlight">Danuri lunar orbiter</span> has transmitted 2,576 high-resolution moon photos. Successfully validated space internet technology. Total flight distance of 38 million km achieved. Creating detailed lunar maps for future landing missions.
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Neumann Space</span>
+                                <span class="country-badge aus">Australia</span>
+                            </div>
+                            <div class="event-date">January 2025</div>
+                        </div>
+                        <div class="event-title">First European Export of Neumann Drive</div>
+                        <div class="event-content">
+                            Next-generation <span class="highlight">Neumann Drive® ND-50</span> electric propulsion system integrated into ESA Pioneer program's EDISON satellite. Revolutionary solid metal propellant technology. First export to Europe demonstrating commercial viability.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

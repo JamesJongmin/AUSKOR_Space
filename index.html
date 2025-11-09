@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Australia-Korea Space Industry Intelligence</title>
+    <title>Dashboard - Space Industry Intelligence</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-CSS
+    
     * {
         margin: 0;
         padding: 0;
@@ -20,96 +19,104 @@ CSS
         color: #e4e4e7;
         line-height: 1.6;
         overflow-x: hidden;
-    }
-    
-    .top-bar {
-        background: rgba(10, 14, 26, 0.95);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 12px 0;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-    }
-    
-    .top-bar-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 40px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
     
-    .logo {
-        font-size: 14px;
-        font-weight: 600;
+    /* Sidebar */
+    .sidebar {
+        width: 260px;
+        background: rgba(15, 23, 42, 0.95);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding: 24px 0;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    
+    .sidebar-logo {
+        padding: 0 20px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 20px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+        font-weight: 700;
         color: #fff;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
     }
     
     .logo-highlight {
         color: #3b82f6;
     }
     
-    .trend-indicator {
-        display: inline-block;
-        padding: 4px 10px;
-        background: rgba(34, 197, 94, 0.15);
-        color: #4ade80;
-        border: 1px solid rgba(34, 197, 94, 0.3);
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-left: 8px;
+    .sidebar-nav {
+        padding: 0 12px;
     }
     
-    .trend-indicator.hot {
-        background: rgba(239, 68, 68, 0.15);
-        color: #f87171;
-        border-color: rgba(239, 68, 68, 0.3);
-    }
-    
-    .nav-menu {
+    .nav-item {
         display: flex;
-        gap: 8px;
-    }
-    
-    .nav-link {
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 6px;
+        align-items: center;
+        padding: 12px 16px;
+        margin-bottom: 4px;
+        border-radius: 8px;
         color: #a1a1aa;
-        font-size: 13px;
-        font-weight: 500;
         text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
         transition: all 0.2s ease;
     }
     
-    .nav-link:hover {
+    .nav-item:hover {
         background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.1);
         color: #e4e4e7;
     }
     
-    .nav-link.active {
+    .nav-item.active {
         background: rgba(59, 130, 246, 0.15);
-        border-color: rgba(59, 130, 246, 0.3);
         color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    
+    .nav-icon {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+    
+    /* Main Content */
+    .main-content {
+        margin-left: 260px;
+        flex: 1;
+        min-height: 100vh;
+    }
+    
+    .top-bar {
+        background: rgba(10, 14, 26, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 16px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+    }
+    
+    .page-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
     }
     
     .update-info {
         font-size: 12px;
         color: #71717a;
+        margin-top: 4px;
     }
     
     .hero {
-        padding: 80px 40px 60px;
-        max-width: 1400px;
-        margin: 0 auto;
+        padding: 60px 40px 40px;
     }
     
     .hero-title {
@@ -164,53 +171,39 @@ CSS
     }
     
     .container {
-        max-width: 1400px;
-        margin: 0 auto;
         padding: 0 40px 80px;
     }
     
     .section {
-        margin-bottom: 80px;
-    }
-    
-    .section-header {
-        margin-bottom: 32px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 60px;
     }
     
     .section-title {
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 700;
         color: #fff;
-        margin-bottom: 8px;
-        letter-spacing: -0.01em;
+        margin-bottom: 24px;
     }
     
-    .section-description {
-        font-size: 15px;
-        color: #71717a;
-        font-weight: 400;
-    }
-    
-    .timeline {
+    .card-grid {
         display: grid;
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 24px;
     }
     
-    .event-card {
+    .menu-card {
         background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 16px;
-        padding: 28px;
+        padding: 32px;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        text-decoration: none;
+        display: block;
     }
-CSS
-
-
-.event-card::before {
+    
+    .menu-card::before {
         content: '';
         position: absolute;
         top: 0;
@@ -222,155 +215,44 @@ CSS
         transition: opacity 0.3s ease;
     }
     
-    .event-card:hover {
+    .menu-card:hover {
         border-color: rgba(59, 130, 246, 0.3);
-        transform: translateY(-2px);
+        transform: translateY(-4px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
     
-    .event-card:hover::before {
+    .menu-card:hover::before {
         opacity: 1;
     }
     
-    .event-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+    .card-icon {
+        font-size: 40px;
         margin-bottom: 16px;
-        flex-wrap: wrap;
-        gap: 12px;
     }
     
-    .event-meta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+    .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
     }
     
-    .company-badge {
+    .card-description {
+        font-size: 14px;
+        color: #a1a1aa;
+        line-height: 1.6;
+    }
+    
+    .card-badge {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 6px 12px;
         background: rgba(59, 130, 246, 0.15);
         color: #60a5fa;
-        padding: 6px 14px;
-        border-radius: 6px;
-        font-size: 13px;
-        font-weight: 600;
-        border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-    
-    .country-badge {
-        padding: 6px 12px;
         border-radius: 6px;
         font-size: 12px;
         font-weight: 600;
-        border: 1px solid;
-    }
-    
-    .country-badge.aus {
-        background: rgba(34, 197, 94, 0.1);
-        color: #4ade80;
-        border-color: rgba(34, 197, 94, 0.2);
-    }
-    
-    .country-badge.kor {
-        background: rgba(168, 85, 247, 0.1);
-        color: #c084fc;
-        border-color: rgba(168, 85, 247, 0.2);
-    }
-    
-    .country-badge.collab {
-        background: rgba(234, 179, 8, 0.1);
-        color: #fbbf24;
-        border-color: rgba(234, 179, 8, 0.2);
-    }
-    
-    .event-date {
-        color: #71717a;
-        font-size: 13px;
-        font-weight: 500;
-    }
-    
-    .event-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #fff;
-        margin-bottom: 12px;
-        line-height: 1.4;
-    }
-    
-    .event-content {
-        font-size: 15px;
-        color: #a1a1aa;
-        line-height: 1.7;
-    }
-    
-    .highlight {
-        color: #e4e4e7;
-        font-weight: 500;
-    }
-    
-    .grid-2 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        gap: 20px;
-    }
-    
-    @media (max-width: 1200px) {
-        .grid-2 {
-            grid-template-columns: 1fr;
-        }
-    }
-    
-    .filter-tabs {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 32px;
-        flex-wrap: wrap;
-    }
-    
-    .filter-tab {
-        padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 8px;
-        color: #a1a1aa;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    
-    .filter-tab:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    .filter-tab.active {
-        background: rgba(59, 130, 246, 0.15);
-        border-color: rgba(59, 130, 246, 0.3);
-        color: #60a5fa;
-    }
-    
-    .collab-section {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-        border: 1px solid rgba(59, 130, 246, 0.15);
-        border-radius: 20px;
-        padding: 48px;
-        margin-top: 60px;
-    }
-    
-    .collab-title {
-        font-size: 32px;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 16px;
-        text-align: center;
-    }
-    
-    .collab-subtitle {
-        font-size: 16px;
-        color: #71717a;
-        text-align: center;
-        margin-bottom: 40px;
+        border: 1px solid rgba(59, 130, 246, 0.2);
     }
     
     .footer {
@@ -381,1214 +263,230 @@ CSS
         font-size: 14px;
     }
     
-    .footer-title {
-        color: #a1a1aa;
-        font-weight: 600;
-        margin-bottom: 12px;
-    }
-    
-    @media (max-width: 768px) {
-        .hero {
-            padding: 40px 20px 30px;
+    @media (max-width: 1024px) {
+        .sidebar {
+            transform: translateX(-100%);
         }
         
-        .
-Markup
-
-
-hero-title {
-            font-size: 32px;
+        .main-content {
+            margin-left: 0;
         }
         
-        .hero-subtitle {
-            font-size: 16px;
-        }
-        
-        .container {
-            padding: 0 20px 40px;
-        }
-        
-        .event-card {
-            padding: 20px;
-        }
-        
-        .collab-section {
-            padding: 32px 24px;
+        .card-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>
-
 </head>
 <body>
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="logo">
-                Space Industry <span class="logo-highlight">Intelligence</span>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="companies.html" class="nav-link">Companies</a>
-            </nav>
-            <div class="update-info">
-                Last Updated: 9 November 2025
-            </div>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-text">Space Industry <span class="logo-highlight">Intelligence</span></div>
         </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item active">
+                <span class="nav-icon">🏠</span>
+                Dashboard
+            </a>
+            <a href="overview.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                Overview & Roadmap
+            </a>
+            <a href="trends.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                Global Trends
+            </a>
+            <a href="partnerships.html" class="nav-item">
+                <span class="nav-icon">🤝</span>
+                Partnerships
+            </a>
+            <a href="technologies.html" class="nav-item">
+                <span class="nav-icon">🔬</span>
+                Technologies
+            </a>
+            <a href="investment.html" class="nav-item">
+                <span class="nav-icon">💰</span>
+                Investment
+            </a>
+            <a href="companies.html" class="nav-item">
+                <span class="nav-icon">🏢</span>
+                Companies
+            </a>
+        </nav>
     </div>
-Markup
-
-
-<div class="hero">
-    <div class="hero-title">Australia-Korea Space Industry</div>
-    <div class="hero-subtitle">Strategic Intelligence & Collaboration Tracker</div>
-    
-    <div class="stats">
-        <div class="stat-item">
-            <div class="stat-value">$8.0B</div>
-            <div class="stat-label">Australia Market Size (2023)</div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">Dashboard</div>
+            <div class="update-info">Last Updated: 9 November 2025</div>
         </div>
-        <div class="stat-item">
-            <div class="stat-value">19,595</div>
-            <div class="stat-label">Australian Space Jobs</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">₩2.1T</div>
-            <div class="stat-label">Korea KSLV-III Investment</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">$12B</div>
-            <div class="stat-label">Australia 2030 Target</div>
-        </div>
-    </div>
-</div>
 
-<div class="container">
-    <!-- OVERVIEW -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Overview: 호주와 한국의 우주 산업 개발 로드맵</div>
-            <div class="section-description">Australia-Korea Space Industry Development Roadmap</div>
-        </div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Australia Roadmap</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2018-2030</div>
+        <div class="hero">
+            <div class="hero-title">Australia-Korea Space Industry</div>
+            <div class="hero-subtitle">Strategic Intelligence & Collaboration Tracker</div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">$8.0B</div>
+                    <div class="stat-label">Australia Market Size (2023)</div>
                 </div>
-                <div class="event-title">Australia's Strategic Space Development Path</div>
-                <div class="event-content">
-                    Australia's space industry has transformed from <span class="highlight">$8.0B market (2023) targeting $12B by 2030</span>. Key milestones: Australian Space Agency established (2018), <span class="highlight">$3B total investment 2018-2023</span> ($1.1B private sector since 2019), Space Infrastructure Fund ($19.5M), 814 space organizations by FY2023. Strategic priorities: Position Navigation & Timing (PNT), Earth Observation, Space Situational Awareness, Communications, Leapfrog R&D, Robotics & Automation. Target: <span class="highlight">30,000 space jobs by 2030</span> (current: 19,595). Focus areas: launch infrastructure (Arnhem Space Centre expanding to 300 hectares), satellite manufacturing, space domain awareness (EOS tracking systems), and lunar robotics through Moon to Mars initiatives.
+                <div class="stat-item">
+                    <div class="stat-value">19,595</div>
+                    <div class="stat-label">Australian Space Jobs</div>
                 </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Korea Roadmap</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">2021-2045</div>
+                <div class="stat-item">
+                    <div class="stat-value">₩2.1T</div>
+                    <div class="stat-label">Korea KSLV-III Investment</div>
                 </div>
-                <div class="event-title">Korea's Ambitious Space Vision</div>
-                <div class="event-content">
-                    Korea's space program accelerates toward <span class="highlight">Top 5 global space power by 2030</span>. Critical milestones: <span class="highlight">Nuri (KSLV-II) achieving indigenous launch capability</span> (May 2023), Danuri lunar orbiter success (2022-2025), 4th reconnaissance satellite launched (April 2025). Budget growth: <span class="highlight">₩874.2B space budget (2023, +19.5%)</span>, KASA 2025 R&D budget ₩806B (+43%), targeting ₩1.5T by 2027. <span class="highlight">KSLV-III reusable launch vehicle approved</span> (February 2025): ₩2.1T investment through 2032, 10+ tons to LEO, first launch 2030, 20+ launches annually from 2035. Long-term goals: <span class="highlight">manned spaceflight by 2045</span>, 2032 lunar lander mission, reusable rockets by 2035. KASA new headquarters in Sacheon by 2030.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Strategic Partnership</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                    <div class="event-date">2021-2035</div>
-                </div>
-                <div class="event-title">Bilateral Cooperation Framework Evolution</div>
-                <div class="event-content">
-                    <span class="highlight">Comprehensive Strategic Partnership established December 2021</span> with space cooperation as key pillar. December 2021 MoU between Australian Space Agency and Korea's Ministry of Science and ICT enables collaboration in Earth observation, robotics, space manufacturing, and launch. <span class="highlight">Regular Space Policy Dialogue established 2022</span> for coordination. Active partnerships: Hanwha-Gilmour Space MoU (September 2024) for joint launches, INNOSPACE-Equatorial Launch Australia multi-year contract for Arnhem Space Centre launches starting 2025. Priority collaboration areas: <span class="highlight">small satellite development (<100kg)</span>, permanent Korean launch site in Northern Australia, joint Space Situational Awareness, KSLV-III component integration, 2032 lunar lander collaboration, Earth Observation data sharing, next-gen satellite communications.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Timeline 2025-2035</span>
-                        <span class="trend-indicator">📅 MILESTONES</span>
-                    </div>
-                </div>
-                <div class="event-title">Key Development Milestones Ahead</div>
-                <div class="event-content">
-                    <strong>2025:</strong> INNOSPACE inaugural launches from Arnhem Space Centre, Hanwha-Gilmour Space joint R&D programs, KSLV-III component development acceleration<br><br>
-                    <strong>2026-2027:</strong> Joint small satellite development programs operational, Earth Observation data sharing platforms, Australian Space Infrastructure Fund deployment<br><br>
-                    <strong>2030:</strong> <span class="highlight">KSLV-III first launch</span>, Australia reaches $12B industry target, Korea achieves Top 5 space power status, dedicated Korean launch site operational<br><br>
-                    <strong>2032:</strong> <span class="highlight">Korea-Australia collaborative lunar lander mission</span>, KSLV-III reusable capability, expanded launch cadence (20+ annually)<br><br>
-                    <strong>2035:</strong> Full reusable launch vehicle operations, mature Indo-Pacific space ecosystem, integrated SSA networks, established supply chain resilience<br><br>
-                    <strong>2045:</strong> Korea achieves manned spaceflight capability with potential Australian collaboration
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Investment Strategy</span>
-                        <span class="trend-indicator">💰 FUNDING</span>
-                    </div>
-                </div>
-                <div class="event-title">Bilateral Investment & Funding Roadmap</div>
-                <div class="event-content">
-                    <strong>Australia:</strong> <span class="highlight">$3B total investment (2018-2023)</span>, $15B National Reconstruction Fund for enabling technologies, Space Infrastructure Fund ($19.5M), Moon to Mars Supply Chain programs, government-private partnerships accelerating<br><br>
-                    <strong>Korea:</strong> <span class="highlight">₩2.1T KSLV-III investment through 2032</span>, KASA R&D budget targeting ₩1.5T by 2027, government-private matching space fund doubled, new KASA headquarters investment<br><br>
-                    <strong>Joint Opportunities:</strong> Cross-border venture capital linking Australia's Space Infrastructure Fund with Korea's matching fund, bilateral startup market entry support, joint investment in emerging technologies, creating Indo-Pacific space innovation ecosystem. Potential AUKUS Pillar 2 cooperation could facilitate smoother export controls and strategic goods flow.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Technology Focus Areas</span>
-                        <span class="trend-indicator">🔬 R&D</span>
-                    </div>
-                </div>
-                <div class="event-title">Priority Technology Development Areas</div>
-                <div class="event-content">
-                    <strong>Launch Systems:</strong> Reusable rockets (KSLV-III), launch infrastructure (Arnhem Space Centre expansion), component integration (3D-printed heat exchangers, precision guidance, propulsion systems)<br><br>
-                    <strong>Satellites:</strong> Small satellite development (<100kg), reconnaissance constellations, Earth Observation capabilities, satellite manufacturing facilities<br><br>
-                    <strong>Space Domain Awareness:</strong> Joint SSA networks, Non-Earth Imaging (HEO technologies), optical surveillance (EOS systems), laser tracking, space traffic management<br><br>
-                    <strong>Lunar Exploration:</strong> 2032 lunar lander collaboration, robotics and autonomous systems (Roo-ver technology), remote asset management, Artemis program participation<br><br>
-                    <strong>Communications:</strong> Next-gen satellite communications, direct-to-device services, 5G/6G integration, optical communications, quantum secure communications<br><br>
-                    <strong>Applications:</strong> Earth Observation data analytics, AI-powered platforms, critical minerals supply chains, space-qualified manufacturing
+                <div class="stat-item">
+                    <div class="stat-value">$12B</div>
+                    <div class="stat-label">Australia 2030 Target</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- GLOBAL SPACE INDUSTRY TRENDS -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Global Space Industry Trends 2024-2025</div>
-            <div class="section-description">Market Dynamics, Emerging Technologies & Key Players</div>
+        <div class="container">
+            <section class="section">
+                <div class="section-title">Intelligence Modules</div>
+                
+                <div class="card-grid">
+                    <a href="overview.html" class="menu-card">
+                        <div class="card-icon">🗺️</div>
+                        <div class="card-title">Overview & Roadmap</div>
+                        <div class="card-description">
+                            Australia와 한국의 우주 산업 개발 로드맵, 전략적 우선순위, 2030-2045 주요 마일스톤 및 양국 협력 프레임워크
+                        </div>
+                        <div class="card-badge">Strategic Planning</div>
+                    </a>
+
+                    <a href="trends.html" class="menu-card">
+                        <div class="card-icon">📈</div>
+                        <div class="card-title">Global Space Trends</div>
+                        <div class="card-description">
+                            글로벌 우주 산업 동향 2024-2025: SpaceX 독점, 중국 급부상, 메가 컨스텔레이션, Direct-to-Device, 우주 관광 및 재사용 로켓 혁명
+                        </div>
+                        <div class="card-badge">Market Intelligence</div>
+                    </a>
+
+                    <a href="partnerships.html" class="menu-card">
+                        <div class="card-icon">🤝</div>
+                        <div class="card-title">Bilateral Partnerships</div>
+                        <div class="card-description">
+                            Australia-Korea 전략적 우주 파트너십: Hanwha-Gilmour Space MoU, INNOSPACE 발사 계약, 소형 위성 공동 개발, KSLV-III 협력 기회
+                        </div>
+                        <div class="card-badge">Collaboration</div>
+                    </a>
+
+                    <a href="technologies.html" class="menu-card">
+                        <div class="card-icon">🔬</div>
+                        <div class="card-title">Technologies & Capabilities</div>
+                        <div class="card-description">
+                            Upstream (발사체 & 위성 제조), Midstream (발사 서비스 & 지상 인프라), Downstream (지구 관측, 통신, 데이터 분석) 기술 현황
+                        </div>
+                        <div class="card-badge">Technical Analysis</div>
+                    </a>
+
+                    <a href="investment.html" class="menu-card">
+                        <div class="card-icon">💰</div>
+                        <div class="card-title">Investment & Funding</div>
+                        <div class="card-description">
+                            정부 프로그램, 민간 투자 현황: Australia $3B (2018-2023), Korea ₩2.1T KSLV-III, 벤처 캐피탈, 스타트업 펀딩 및 크로스보더 투자 기회
+                        </div>
+                        <div class="card-badge">Financial Intelligence</div>
+                    </a>
+
+                    <a href="companies.html" class="menu-card">
+                        <div class="card-icon">🏢</div>
+                        <div class="card-title">Company Directory</div>
+                        <div class="card-description">
+                            호주 및 한국 주요 우주 기업 디렉토리: HEO, EOS, Gilmour Space, KARI, Hanwha Aerospace, INNOSPACE 등 핵심 플레이어 상세 정보
+                        </div>
+                        <div class="card-badge">Business Development</div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-title">Quick Insights</div>
+                
+                <div class="card-grid">
+                    <div class="menu-card" style="cursor: default;">
+                        <div class="card-icon">🔥</div>
+                        <div class="card-title">Active Partnerships</div>
+                        <div class="card-description">
+                            <strong>2024년 주요 활동:</strong><br>
+                            • Hanwha-Gilmour Space MoU (Sep 2024)<br>
+                            • INNOSPACE-Arnhem Space Centre 계약<br>
+                            • EOS $9M 국방 계약<br>
+                            • HEO-BlackSky 7자리수 계약
+                        </div>
+                    </div>
+
+                    <div class="menu-card" style="cursor: default;">
+                        <div class="card-icon">🚀</div>
+                        <div class="card-title">Upcoming Milestones</div>
+                        <div class="card-description">
+                            <strong>2025-2030 핵심 일정:</strong><br>
+                            • INNOSPACE Arnhem 첫 발사 (2025)<br>
+                            • KSLV-III 첫 발사 (2030)<br>
+                            • Korea-Australia 달 착륙선 (2032)<br>
+                            • KSLV-III 재사용 (2035)
+                        </div>
+                    </div>
+
+                    <div class="menu-card" style="cursor: default;">
+                        <div class="card-icon">💡</div>
+                        <div class="card-title">Collaboration Opportunities</div>
+                        <div class="card-description">
+                            <strong>우선 협력 분야:</strong><br>
+                            • 소형 위성 (<100kg) 공동 개발<br>
+                            • KSLV-III 호주 부품 통합<br>
+                            • 우주 상황 인식 (SSA) 네트워크<br>
+                            • 차세대 위성 통신 (5G/6G)
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Market Overview</span>
-                        <span class="trend-indicator">↗ GROWING</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">$570B Global Space Economy Expanding to $1-2T by 2030-2040</div>
-                <div class="event-content">
-                    Global space economy reached <span class="highlight">$570 billion in 2023</span>, up 7.4% YoY with 7.3% CAGR. Commercial revenues account for <span class="highlight">~80% of industry activity</span>. Projections: $600-750B by 2030 (conservative) or <span class="highlight">$1-2 trillion by 2040</span> (bullish). Government spending at $135B (2024) with 54% defense-related. Private sector driving innovation through increased investment and strategic public-private partnerships.
-                </div>
-            </div>
 
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">SpaceX Dominance</span>
-                        <span class="trend-indicator hot">🔥 HOT</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">SpaceX: 138 Launches (87% US Market Share), Starship Game-Changer</div>
-                <div class="event-content">
-                    SpaceX conducted <span class="highlight">138 of 145 US orbital launches in 2024</span>, maintaining overwhelming market dominance. <span class="highlight">Starship approved for 25+ launches in 2025</span> by FAA. Potential disruption: <$1,000/kg to LEO (currently <$3k on Falcon 9, down from $20k in early 2000s). Private valuation: <span class="highlight">~$350 billion</span> (6x NASA's annual budget). Starlink constellation: 6,500+ satellites operational. On-orbit fuel transfer demonstration planned 2025 for Artemis lunar missions.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Competition Rising</span>
-                        <span class="trend-indicator">📈 EMERGING</span>
-                    </div>
-                    <div class="event-date">2025</div>
-                </div>
-                <div class="event-title">Blue Origin, Rocket Lab, ULA Challenge SpaceX Monopoly</div>
-                <div class="event-content">
-                    <span class="highlight">Blue Origin's New Glenn</span> heavy-lift reusable rocket maiden flight expected Q1 2025. <span class="highlight">Rocket Lab's Neutron</span> targeting late 2025 to compete with Falcon 9. <span class="highlight">ULA's Vulcan Centaur</span> certification for National Security missions. Western space industry "uncomfortably dependent" on SpaceX, creating urgency for alternatives. If rivals fail to meet launch cadence, satellite operators' growth plans face delays.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">China Rising</span>
-                        <span class="trend-indicator hot">🚀 RAPID</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">China: 68 Launches, Thousands Sails Constellation, 2030 Lunar Landing</div>
-                <div class="event-content">
-                    China performed <span class="highlight">68 orbital launches in 2024</span>, second only to US. <span class="highlight">Thousands Sails Constellation</span> plans 648 satellites by end of 2025. Active space station operational. Announced <span class="highlight">2030 crewed lunar landing</span>. Startups developing reusable rockets: Space Pioneer's Tianlong-3, Cosmoleap's Yueqian with "chopstick clamp" recovery (SpaceX-style). LandSpace's Zhuque-2: world's first methane-fueled orbital rocket (2023). "Moving fast with capital behind them, will undercut US/European prices."
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Mega-Constellations</span>
-                        <span class="trend-indicator">📡 EXPLOSIVE</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">11,539 Satellites in Orbit (3.4x Growth Since 2020)</div>
-                <div class="event-content">
-                    Operational satellites exploded from <span class="highlight">3,371 (2020) to 11,539 (2024)</span> - threefold in four years. Major constellations: Starlink (6,500+), OneWeb (600+), Amazon Kuiper (3,000+ planned from 2025). Euroconsult projects <span class="highlight">18,000+ smallsats 2024-2033</span>. Paradigm shift: few large satellites → swarms of many. Benefits: resilience, global coverage, short revisit times. Concerns: crowded orbits, interference, space debris requiring automated collision avoidance.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Direct-to-Device</span>
-                        <span class="trend-indicator hot">🔥 BREAKTHROUGH</span>
-                    </div>
-                    <div class="event-date">2025</div>
-                </div>
-                <div class="event-title">D2D: "Holy Grail" - Satellites Connecting Directly to Smartphones</div>
-                <div class="event-content">
-                    <span class="highlight">Direct-to-Device (D2D)</span> becoming reality, "next great holy grail for industry." Satellite operators targeting <span class="highlight">billions of mobile terrestrial devices</span> for first time. Partnerships: Skylo with Verizon and Google. 2025: devices working in satellite/cellular modes becoming ubiquitous (IoT sensors, dongles, smartphones). AST SpaceMobile Block 2 BlueBird satellites launching. Revolutionary for remote/rural connectivity.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Lunar Economy</span>
-                        <span class="trend-indicator">🌙 ACCELERATING</span>
-                    </div>
-                    <div class="event-date">2025-2030</div>
-                </div>
-                <div class="event-title">NASA Artemis vs China: New Moon Race Heating Up</div>
-                <div class="event-content">
-                    NASA <span class="highlight">Artemis II crewed lunar flyby: September 2025</span>, Artemis III landing: September 2026 (delayed 1 year). SpaceX Starship HLS lander for Artemis III/IV, Blue Origin's Blue Moon for Artemis V. China targeting <span class="highlight">2030 crewed lunar landing</span>, completed tests of new crew rocket/lander. Intuitive Machines' Nova-C reached Moon's south pole (2025), first US private lunar landing. Japan's SLIM, India's progress expanding global lunar capabilities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Space Defense</span>
-                        <span class="trend-indicator">🛡️ CRITICAL</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">US Space Development Agency: $4.3B for Proliferated LEO Defense</div>
-                <div class="event-content">
-                    SDA's <span class="highlight">$4.3B FY25 budget</span> for Tranches 2/3 of Proliferated Warfighter Space Architecture (PWSA). LEO satellite network for <span class="highlight">advanced missile detection and tracking</span>. Aggressive cadence: 11 launches in 11 months. Proliferated LEO makes National Security constellations "more resilient and easier to replenish." Growing threats: counterspace operations, physical/cyber risks to satellites now operational reality.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Launch Costs</span>
-                        <span class="trend-indicator">💰 PLUMMETING</span>
-                    </div>
-                    <div class="event-date">2000s-2025</div>
-                </div>
-                <div class="event-title">95% Cost Reduction: $20K → <$1K per kg to LEO</div>
-                <div class="event-content">
-                    Reusable launch technology driving dramatic cost decline: ~$20,000/kg (early 2000s) → <span class="highlight"><$3,000/kg on Falcon 9</span> → <$1,000/kg projected on Starship. Falcon 9 single booster flown <span class="highlight">20+ times</span>. Blue Origin, Rocket Lab pursuing reusability. Starship's 100+ ton capacity could deliver "entire annual smallsat output in few launches." Risk: capacity glut making small launchers obsolete. Counterpoint: new applications will emerge (space tourism, industrial projects, lunar infrastructure).
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">New Space Nations</span>
-                        <span class="trend-indicator">🌏 GLOBAL</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">India, Japan, UAE, Others Joining Commercial Space Race</div>
-                <div class="event-content">
-                    <span class="highlight">India: 5 launches in 2024</span>, Skyroot Aerospace (first private rocket November 2022), Vikram-1 orbital vehicle development. <span class="highlight">Rocket Lab (New Zealand): 13 launches in 2024</span>. Europe struggling: only 3 launches (Ariane 6 delays), startups Isar Aerospace, Rocket Factory Augsburg, Orbex funded with €45M. Russia: 21 launches. Commercial space activity now truly global, more countries joining 2025 with new national programs and startups.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Space Tourism</span>
-                        <span class="trend-indicator">✈️ EMERGING</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">Commercial Spaceflight: Blue Origin, Virgin Galactic, SpaceX Missions</div>
-                <div class="event-content">
-                    <span class="highlight">Blue Origin's New Shepard</span>: proven suborbital tourism record. <span class="highlight">Axiom Space-SpaceX ISS missions</span>: ~$55M per seat for week-long stay. SpaceX planning multi-day orbital vacations. Virgin Galactic continuing suborbital flights. Luxury travel companies exploring space tourism packages. Emerging business models: training programs, virtual space travel, high-altitude experiences. Space tourism no longer fantasy but growing industry.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Space Sustainability</span>
-                        <span class="trend-indicator">⚠️ URGENT</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">Space Debris Crisis: 11,000+ Satellites Demand New Solutions</div>
-                <div class="event-content">
-                    Rapid satellite growth creating major debris problem. Threat to spacecraft, satellites, future missions. Space agencies and private firms developing <span class="highlight">debris removal technologies, AI-driven tracking, collision-avoidance systems</span>. Emerging market: space sustainability. Governments introducing regulations. Automated collision avoidance becoming standard. New approaches to traffic management and satellite design required for crowded orbits.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Regulatory Evolution</span>
-                        <span class="trend-indicator">📋 CHANGING</span>
-                    </div>
-                    <div class="event-date">February 2025</div>
-                </div>
-                <div class="event-title">US Executive Orders: Reducing Regulatory Friction for Commercial Space</div>
-                <div class="event-content">
-                    President Trump's <span class="highlight">February 2025 executive orders</span> aimed at reducing regulatory friction and modernizing legacy space policies. Could create additional momentum for commercial ventures and infrastructure development. Goals: Mars missions, deep-space exploration. Governments redefining space strategies, regulatory frameworks, funding priorities to support commercial expansion. Public-private partnerships crucial for advancing human/robotic presence beyond Earth orbit.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Investment Trends</span>
-                        <span class="trend-indicator">💸 MATURING</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">Space Industry Maturation: Record Exits, IPOs, Middle-Market Growth</div>
-                <div class="event-content">
-                    <span class="highlight">More space company exits expected 2025</span>, fueling additional startup investment. Middle-market companies seeing record growth, preparing for exits. New financial vehicles and increasing public market investor interest accelerating sector. However: consolidation coming 2025-2030. Most efficient/reliable launchers (with government contracts) will survive. Others pivot or perish. Not all 100+ rockets in development will find sustainable market. Favorable economic winds supporting space startup ecosystem.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Industry Sentiment</span>
-                        <span class="trend-indicator">🌟 OPTIMISTIC</span>
-                    </div>
-                    <div class="event-date">2025</div>
-                </div>
-                <div class="event-title">"Renaissance of Space" - Most Exciting Era in 30 Years</div>
-                <div class="event-content">
-                    <span class="highlight">"If Apollo era was golden age, now we're in renaissance of space"</span> - Clay Mowry, AIAA CEO. "Most exciting time to be in space in 30 years I've been in industry." Despite economic/geopolitical uncertainty, excitement for final frontier remains strong. World Economic Forum predicts industry growth to $1.8T over next 11 years. 2025: pivotal year for space capabilities, regulatory developments, global engagement. Commercial space truly entering mainstream.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AUSTRALIA-KOREA STRATEGIC SPACE PARTNERSHIP -->
-    <div class="collab-section">
-        <div class="collab-title">Australia-Korea Strategic Space Partnership</div>
-        <div class="collab-subtitle">Comprehensive Strategic Partnership Framework (Established December 2021)</div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">🔥 ACTIVE</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                    <div class="event-date">September 2024</div>
-                </div>
-                <div class="event-title">Hanwha-Gilmour Space Major MoU Signed</div>
-                <div class="event-content">
-                    <span class="highlight">Hanwha Defence Australia, Hanwha Aerospace, and Gilmour Space Technologies</span> signed major MoU at Land Forces 2024. Leveraging Hanwha's defense expertise with Gilmour's <span class="highlight">Eris rocket and Queensland orbital launch facilities</span>. Immediate goals: joint R&D, co-development of integrated launch technologies, and <span class="highlight">collaborative launches of Korean payloads from Australian territory</span>. Addressing regulatory, legal, and export challenges to position as Indo-Pacific space services leaders.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">🔥 ACTIVE</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">Innospace-Equatorial Launch Australia Partnership</div>
-                <div class="event-content">
-                    Korean firm <span class="highlight">INNOSPACE signed multi-year contract</span> with Equatorial Launch Australia for orbital launches from <span class="highlight">Arnhem Space Centre</span> in Northern Territory. Inaugural launches scheduled for 2025. Australia's equatorial location provides significant launch cost advantages and safety benefits by avoiding populated areas.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">FRAMEWORK</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                    <div class="event-date">December 2021</div>
-                </div>
-                <div class="event-title">Bilateral MoU on Cyber & Critical Technology</div>
-                <div class="event-content">
-                    <span class="highlight">Australian Space Agency and Korea's Ministry of Science and ICT MoU</span> forms part of Comprehensive Strategic Partnership. Enables collaboration in <span class="highlight">Earth observation, robotics and automation, space manufacturing, and launch</span>. Regular Space Policy Dialogue established in 2022 for coordination.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Small Satellites</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Joint Small Satellite Development (<100kg)</div>
-                <div class="event-content">
-                    Priority collaboration area for <span class="highlight">surveillance and reconnaissance satellites</span>. Korea's 3-year small satellite lifespan creates need for international partnership. Australia's <span class="highlight">Earth Observation from Space Roadmap</span> emphasizes international collaboration to strengthen manufacturing capabilities. Joint development builds domestic infrastructure and skills in both nations. Surveillance targeting North Korea's nuclear capabilities provides mutual security benefits.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Launch Infrastructure</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Permanent Korean Launch Site in Australia</div>
-                <div class="event-content">
-                    Proposed <span class="highlight">dedicated Korean launch site in Northern Australia</span> leveraging equatorial proximity for lower launch costs. Australia's <span class="highlight">Arnhem Space Centre expanding to 300 hectares</span>. Streamlined regulatory arrangements for launch permits, export licenses, and cross-border rocket movement. Korean investment would benefit local Australian economies while providing Seoul strategic launch capabilities distant from potential threats.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Space Situational Awareness</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Joint SSA & Space Traffic Management</div>
-                <div class="event-content">
-                    Increased collaboration in <span class="highlight">space security as operational warfighting domain</span>. Integration of <span class="highlight">EOS Mt Stromlo and Learmonth tracking systems</span> with Korean SSA networks. HEO's Non-Earth Imaging capabilities complement Korean space surveillance. Building resilient Indo-Pacific space domain awareness architecture against counterspace operations and cyber threats.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Launch Vehicle Technology</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">KSLV-III Component Integration Opportunities</div>
-                <div class="event-content">
-                    Australian technologies for <span class="highlight">KSLV-III reusable launch vehicle</span>: Conflux Technology's 3D-printed heat exchangers, Advanced Navigation's precision guidance systems, MOOG's satellite control systems, and Neumann Space's electric propulsion. Bilateral technology transfer and co-development reducing costs and accelerating development timelines.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Lunar Exploration</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">2032 Lunar Lander Collaboration</div>
-                <div class="event-content">
-                    Australia's <span class="highlight">Roo-ver technology and remote asset management expertise</span> for Korea's 2032 lunar lander mission. Australian strengths in <span class="highlight">robotics, autonomous systems, and harsh environment operations</span> (mining sector) complement Korean spacecraft capabilities. Both nations participating in NASA Artemis program enables trilateral cooperation framework.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Earth Observation</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Data Sharing & AI Analytics Platform</div>
-                <div class="event-content">
-                    Integration of <span class="highlight">Digital Earth Australia</span> with Korean KOMPSAT and reconnaissance satellite data. Joint AI-powered analytics for agriculture, climate change, disaster management, and defense applications. Could revive Australia's cancelled National Space Mission for Earth Observation at lower cost through collaboration. LatConnect 60 AI technology partnership opportunities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Communications</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Next-Gen Satellite Communications</div>
-                <div class="event-content">
-                    Korean telecommunications leadership with Australian satellite communications infrastructure. <span class="highlight">EM Solutions' King Cobra terminals</span> integration with Korean LEO constellations. Joint development of <span class="highlight">direct-to-mobile 5G/6G services, optical communications, and quantum secure communications</span>. SmartSat CRC high-speed communication terminal technology collaboration.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Critical Technologies</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">AUKUS Pillar 2 Cooperation Potential</div>
-                <div class="event-content">
-                    Australia, US, and UK expressed interest in exploring <span class="highlight">Korea joining AUKUS Pillar 2</span> for advanced capability cooperation. Would facilitate smoother export controls and strategic goods flow for satellite development and launch collaboration. Korea ranks highly in satellite-related research per ASPI Critical Technology Tracker. Joint leadership in defense-relevant technologies: AI, quantum computing, advanced materials.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Investment</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Cross-Border Venture Capital & Startups</div>
-                <div class="event-content">
-                    Link Australia's <span class="highlight">Space Infrastructure Fund ($19.5M)</span> with Korea's government-private matching space fund (doubled by 2027). Support bilateral startup market entry and technology partnerships. Joint investment in emerging space technologies. Creating Indo-Pacific space innovation ecosystem.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Supply Chain</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Critical Minerals & Space Manufacturing</div>
-                <div class="event-content">
-                    Australia's <span class="highlight">critical minerals capabilities</span> (lithium, rare earths, nickel) with Korea's <span class="highlight">advanced manufacturing capacity</span>. Space-qualified component manufacturing leveraging Korean expertise in electronics and materials science. Resilient supply chains countering Chinese economic coercion that both nations have experienced.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Workforce</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Talent Exchange & Training Programs</div>
-                <div class="event-content">
-                    Bilateral <span class="highlight">internship and researcher exchange programs</span> between Australian Space Agency and KASA. STEM education collaboration leveraging 60+ years of scientific partnership. Joint space mission simulation and training. People-to-people links pillar of Comprehensive Strategic Partnership creating sustained cooperation framework.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Regional Leadership</span>
-                        <span class="country-badge collab">Collaboration</span>
-                    </div>
-                </div>
-                <div class="event-title">Indo-Pacific Middle Powers Alliance</div>
-                <div class="event-content">
-                    Both nations as <span class="highlight">"middle powers" demonstrating flexible, agile alliance</span> can shape regional security and technological innovation. Template for Indo-Pacific allies developing <span class="highlight">dual-use capabilities, enhanced deterrence, and economic growth</span> via space cooperation. Building regional resilience through control of critical infrastructure, supply chains, and space-based data. Partnership positioned as proactive response to growing counterspace threat landscape.
-                </div>
-            </div>
+        <div class="footer">
+            <p style="font-weight: 600; margin-bottom: 12px; color: #a1a1aa;">Space Industry Intelligence Platform</p>
+            <p style="margin-top: 8px; line-height: 1.8;">
+                Intelligence compiled from: Australian Space Agency, Korea AeroSpace Administration (KASA), 
+                Space Industry Association of Australia, official government releases, and verified industry publications.
+            </p>
+            <p style="margin-top: 20px; color: #52525b; font-size: 13px;">
+                Business Development | Strategic Partnership Intelligence
+            </p>
         </div>
     </div>
 
-    <!-- UPSTREAM -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Upstream: Launch Vehicles & Satellites</div>
-            <div class="section-description">Manufacturing, Assembly, Testing & Launch Systems</div>
-        </div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">KARI / Hanwha Aerospace</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">February 2025</div>
-                </div>
-                <div class="event-title">KSLV-III Reusable Launch Vehicle Approved</div>
-                <div class="event-content">
-                    Korea's National Space Council approved plans to develop <span class="highlight">KSLV-III as a reusable launch vehicle</span> by 2035. First launch scheduled for 2030 with 10+ tons to LEO capacity. Target of 20+ launches annually from 2035. Hanwha Aerospace selected as prime contractor with ₩2.1 trillion investment through 2032.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">KARI</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">April 2025</div>
-                </div>
-                <div class="event-title">4th Reconnaissance Satellite Launched</div>
-                <div class="event-content">
-                    <span class="highlight">425Sat-3 SAR satellite</span> launched via SpaceX Falcon 9. Building 5-satellite constellation for 2-hour surveillance cycle of North Korea. First spy satellite launched December 2023, rapidly expanding indigenous reconnaissance capabilities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">KARI</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">May 2023</div>
-                </div>
-Markup
-
-
-<div class="event-title">Nuri (KSLV-II) 3rd Launch Success</div>
-                <div class="event-content">
-                    Successfully placed <span class="highlight">NEXTSat-2 SAR satellite</span> (180kg) and 4 CubeSats into orbit. 4th launch scheduled for 2025 with 500kg class satellite. Demonstrates Korea's indigenous space launch capability with domestically-developed KRE-075 engines.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Space Machines Company</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2025</div>
-                </div>
-                <div class="event-title">Satellite Manufacturing Facility with UTS</div>
-                <div class="event-content">
-                    Partnership with University of Technology Sydney to establish industry-scale facility for manufacturing <span class="highlight">Optimus Viper orbital servicing satellites</span>. Target production of up to 20 satellites annually. Demonstrates Australia's full-spectrum space manufacturing capability.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Fleet Space Technologies</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">January 2025</div>
-                </div>
-                <div class="event-title">Centauri 7 & 8 Satellites Deployed</div>
-                <div class="event-content">
-                    Next-generation <span class="highlight">Centauri satellites</span> launched on SpaceX Transporter-12. Expanding proprietary satellite network for mineral exploration services. Advanced IoT and geophysical data capabilities supporting mining sector.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Conflux Technology</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">3D-Printed Rocket Heat Exchangers</div>
-                <div class="event-content">
-                    Developing <span class="highlight">advanced 3D-printed heat exchangers</span> for rocket engines using additive manufacturing. Demonstrating spin-in/spin-out technology between space and terrestrial applications. Reducing manufacturing costs while improving performance.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MIDSTREAM -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Midstream: Launch Services & Ground Infrastructure</div>
-            <div class="section-description">Launch Operations, Ground Stations, Mission Control, TT&C</div>
-        </div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">EOS Space Systems</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">June 2025</div>
-                </div>
-                <div class="event-title">2025 Australian Space Awards Winner</div>
-                <div class="event-content">
-                    Won <span class="highlight">Business of the Year (Large)</span> and <span class="highlight">Space Situational Awareness Program of the Year</span>.
-copy
-
-
-Operating advanced tracking systems at Mt Stromlo (ACT) and Learmonth (WA) with daylight tracking and high-energy laser ranging capabilities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">EOS Space Systems</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">September 2024</div>
-                </div>
-                <div class="event-title">$9M Defence Space Capabilities Contract</div>
-                <div class="event-content">
-                    Secured contract with Australian Defence Force Joint Capabilities Division to develop space capabilities. Leveraging <span class="highlight">optical surveillance and high-energy laser technologies</span> for space domain awareness. Delivery scheduled for 2H 2024 and 2025.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Skykraft</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">July 2024</div>
-                </div>
-                <div class="event-title">Skykraft 4 Launched from Vandenberg</div>
-                <div class="event-content">
-                    Successfully launched from California's Vandenberg Space Force Base. Part of plan to deploy <span class="highlight">space-enabled air traffic management network</span> by 2026. Strengthening Australia's global leadership in space situational awareness.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Varda Space</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">October 2024</div>
-                </div>
-                <div class="event-title">Orbital Manufacturing Returns to South Australia</div>
-                <div class="event-content">
-                    Australian Space Agency authorized Varda Space to conduct series of <span class="highlight">orbital processing and reentry capsule returns</span> in regional South Australia. W-2 capsule launched on SpaceX Transporter-12. Pioneering in-space manufacturing and recovery.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">EM Solutions</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2024</div>
-                </div>
-                <div class="event-title">$19M Satellite Communications Orders</div>
-                <div class="event-content">
-                    Follow-on orders from European NATO Navy for 6 additional <span class="highlight">King Cobra satellite communication terminals</span> ($10M). New East Asian Navy customer ordered 4 Cobra terminals ($4M). Supporting continued growth in maritime SATCOM.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">NBN Co</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2025</div>
-                </div>
-                <div class="event-title">Transition to Amazon Project Kuiper</div>
-                <div class="event-content">
-Markup
-
-
-Announced transition from existing Sky Muster geostationary satellites to <span class="highlight">Amazon Project Kuiper LEO constellation</span>. Significantly improving high-speed internet service across Australia, particularly in remote areas.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DOWNSTREAM -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Downstream: Applications & Services</div>
-            <div class="section-description">Earth Observation, Navigation, Communications, Data Analytics</div>
-        </div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">HEO</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">7-Figure Deal with BlackSky for Non-Earth Imaging</div>
-                <div class="event-content">
-                    Secured multi-million dollar contract to access excess capacity of BlackSky's Gen-2 satellites for <span class="highlight">Non-Earth Imaging (NEI)</span>. Enhancing space object monitoring and space domain awareness capabilities. HEO's Adler Imager to be deployed on Optus LEO satellite in 2028.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">HEO</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">January 2025</div>
-                </div>
-                <div class="event-title">Holmes Imager Successfully Launched</div>
-                <div class="event-content">
-                    <span class="highlight">Holmes imager</span> deployed on SpaceX Transporter-12 mission. Received $700K+ funding from Australian Space Agency's Moon to Mars Supply Chain Capability Improvement Grant. Advanced space surveillance technology.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Visionary Machines</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2024</div>
-                </div>
-                <div class="event-title">$4.4M Government Grant for Counter-Drone Tech</div>
-                <div class="event-content">
-                    Awarded Industry Growth Program grant to commercialize <span class="highlight">Pandion Sentinel counter-drone system</span>. Total project investment of $8.75M with matched funding. Scaling Sydney manufacturing capabilities for defense and security markets.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Visionary Machines</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">March 2024</div>
-                </div>
-                <div class="event-title">CIA Venture Capital Investment</div>
-                <div class="event-content">
-                    Secured investment from IQT (CIA's venture capital arm). <span class="highlight">Vanguard spatial vision technology</span> resolves camera system deficiencies for autonomous vehicles. Former Collins Aerospace MD Sonny Foster appointed as CEO.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-Markup
-
-
-<div class="event-meta">
-                        <span class="company-badge">Advanced Navigation</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">Precision Navigation Systems for Global Markets</div>
-                <div class="event-content">
-                    Developing and supplying <span class="highlight">GNSS/INS integrated navigation systems</span> with world-class precision. Applications in autonomous vehicles, drones, and maritime sectors. Contributing to Australia's Position, Navigation & Timing priority.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Insitu Pacific</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2024-2025</div>
-                </div>
-                <div class="event-title">Australian Army Integrator UAS Training</div>
-                <div class="event-content">
-                    Delivering operator and maintenance training to Australian Army's 20 Regiment for <span class="highlight">Integrator Tactical UAS</span>. Brisbane training facility features operational hardware and high-fidelity mission simulators. Supporting diverse operational environments.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Danuri / KARI</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">2022-2025</div>
-                </div>
-                <div class="event-title">Danuri Lunar Orbiter Ongoing Mission</div>
-                <div class="event-content">
-                    Launched August 2022, <span class="highlight">Danuri lunar orbiter</span> has transmitted 2,576 high-resolution moon photos. Successfully validated space internet technology. Total flight distance of 38 million km achieved. Creating detailed lunar maps for future landing missions.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">KASA / NASA</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">2025</div>
-                </div>
-                <div class="event-title">LUSEM Lunar Environment Monitor</div>
-                <div class="event-content">
-                    Joint development with NASA of <span class="highlight">Lunar Space Environment Monitor (LUSEM)</span>. Scheduled to fly on Intuitive Machines' IM-3 mission. ₩7.3 billion investment to observe near-surface high-energy particle environment.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Neumann Space</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">January 2025</div>
-                </div>
-                <div class="event-title">First European Export of Neumann Drive</div>
-                <div class="event-content">
-                    Next-generation <span class="highlight">Neumann Drive® ND-50</span> electric propulsion system integrated into ESA Pioneer program's EDISON satellite. Revolutionary solid metal propellant technology. First export to Europe demonstrating commercial viability.
-                </div>
-Markup
-
-
-</div>
-        </div>
-    </section>
-
-    <!-- INVESTMENT TRENDS -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Investment & Funding Landscape</div>
-            <div class="section-description">Government Programs, Private Capital & Strategic Initiatives</div>
-        </div>
-        
-        <div class="timeline">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Australia Space Infrastructure Fund</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2023-2027</div>
-                </div>
-                <div class="event-title">$19.5M Space Infrastructure Fund</div>
-                <div class="event-content">
-                    Australian Government's dedicated fund supporting space industry infrastructure development. Focus on ground infrastructure, manufacturing capabilities, and mission support systems. Available for SMEs and startups to build sovereign capabilities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">National Reconstruction Fund</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2023-2033</div>
-                </div>
-                <div class="event-title">$15B for Critical Technologies</div>
-                <div class="event-content">
-                    <span class="highlight">$15 billion National Reconstruction Fund</span> with allocation for enabling technologies including space-related capabilities. Supporting advanced manufacturing, quantum technologies, AI, and robotics relevant to space sector.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">KASA Budget Growth</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">2023-2027</div>
-                </div>
-                <div class="event-title">₩874.2B Space Budget (+19.5% YoY)</div>
-                <div class="event-content">
-                    2023 space budget reached <span class="highlight">₩874.2 billion (+19.5%)</span>. KASA 2025 R&D budget: <span class="highlight">₩806B (+43%)</span>, targeting ₩1.5T by 2027. Government-private matching space fund doubled. Aggressive investment supporting Top 5 space power ambition.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">KSLV-III Program</span>
-                        <span class="country-badge kor">Korea</span>
-                    </div>
-                    <div class="event-date">2025-2032</div>
-                </div>
-                <div class="event-title">₩2.1T Investment in Reusable Launch Vehicle</div>
-                <div class="event-content">
-                    <span class="highlight">₩2.1 trillion investment through 2032</span> for KSLV-III reusable launch vehicle development. Hanwha Aerospace prime contractor. First launch 2030, targeting 20+ launches annually by 2035. Major R&D investment in propulsion, materials, guidance systems.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Moon to Mars Initiative</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2021-2030</div>
-                </div>
-                <div class="event-title">Supply Chain Capability Grants</div>
-                <div class="event-content">
-                    Australian Space Agency's Moon to Mars Supply Chain Capability Improvement Grant program. Supporting companies like HEO (Holmes imager - $700K+), developing technologies for lunar and deep space missions. Building sovereign lunar exploration capabilities.
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Private Sector Investment</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                    <div class="event-date">2019-2023</div>
-                </div>
-                <div class="event-title">$1.1B Private Capital Since 2019</div>
-                <div class="event-content">
-                    <span class="highlight">$1.1 billion private sector investment</span> since 2019 driving Australian space industry growth. Venture capital, strategic investments, and international partnerships accelerating. Companies like Fleet Space, Gilmour Space securing major rounds.
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- KEY COMPANIES DIRECTORY -->
-    <section class="section">
-        <div class="section-header">
-            <div class="section-title">Key Players Directory</div>
-            <div class="section-description">Priority Companies for Business Development</div>
-        </div>
-        
-        <div class="grid-2">
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">HEO</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Non-Earth Imaging Specialist</div>
-                <div class="event-content">
-                    Space situational awareness leader. Adler Imager and Holmes imager technologies. BlackSky partnership. <span class="highlight">Expertise: Space domain awareness, satellite tracking, NEI cameras</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Conflux Technology</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Advanced Manufacturing</div>
-                <div class="event-content">
-                    3D-printed heat exchangers for rocket engines. Additive manufacturing expertise. <span class="highlight">Expertise: Thermal management, rocket propulsion components, advanced materials</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">EOS Space Systems</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Optical Surveillance & Laser Tracking</div>
-                <div class="event-content">
-                    Mt Stromlo and Learmonth facilities. High-energy laser ranging. 2025 Australian Space Awards winner. <span class="highlight">Expertise: SSA, laser tracking, debris monitoring, optical communications</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Advanced Navigation</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Precision Navigation Solutions</div>
-                <div class="event-content">
-                    World-class GNSS/INS integrated systems. Autonomous vehicles and maritime applications. <span class="highlight">Expertise: PNT, inertial navigation, sensor fusion, autonomous systems</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Visionary Machines</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Computer Vision & Spatial Sensing</div>
-                <div class="event-content">
-                    Pandion spatial sensor technology. CIA-backed. Counter-drone systems. <span class="highlight">Expertise: 3D vision, autonomous navigation, surveillance, multi-spectral cameras</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-Markup
-
-
-<div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">MOOG</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Satellite Control Systems</div>
-                <div class="event-content">
-                    Attitude control and propulsion systems. Critical component supplier. <span class="highlight">Expertise: Satellite ADCS, actuators, precision mechanisms, space-qualified hardware</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Insitu Pacific</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Unmanned Aircraft Systems</div>
-                <div class="event-content">
-                    Boeing subsidiary. Integrator and ScanEagle UAS. Maritime ISR expertise. <span class="highlight">Expertise: RPAS operations, ISR, maritime domain awareness, autonomous systems</span>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <div class="event-header">
-                    <div class="event-meta">
-                        <span class="company-badge">Space Machines Company</span>
-                        <span class="country-badge aus">Australia</span>
-                    </div>
-                </div>
-                <div class="event-title">Orbital Servicing</div>
-                <div class="event-content">
-                    Optimus Viper satellites. In-orbit servicing capabilities. Space MAITRI mission. <span class="highlight">Expertise: Satellite manufacturing, orbital transfer vehicles, on-orbit services</span>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="footer">
-    <div class="footer-title">Data Sources & Methodology</div>
-    <p style="margin-top: 8px; line-height: 1.8;">
-        Intelligence compiled from: Australian Space Agency, Korea AeroSpace Administration (KASA), 
-        Space Industry Association of Australia, official government releases, industry publications, 
-        and verified company announcements.
-    </p>
-    <p style="margin-top: 20px; color: #52525b; font-size: 13px;">
-        Business Development | Space Sector Intelligence Platform
-    </p>
-</div>
-
-<script>
-    // Smooth fade-in animation on load
-    document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.event-card, .stat-item');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 30);
-                    observer.unobserve(entry.target);
-                }
+    <script>
+        // Smooth fade-in animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.stat-item, .menu-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 30);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
             });
-        }, {
-            threshold: 0.1
-        });
 
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
         });
-    });
-
-    // Filter functionality (can be extended)
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-</script>
-
+    </script>
 </body>
 </html>

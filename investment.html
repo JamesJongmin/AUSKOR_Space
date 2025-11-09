@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment - Space Industry Intelligence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #0a0e1a;
+        color: #e4e4e7;
+        line-height: 1.6;
+        overflow-x: hidden;
+        display: flex;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        width: 260px;
+        background: rgba(15, 23, 42, 0.95);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding: 24px 0;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    
+    .sidebar-logo {
+        padding: 0 20px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 20px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.3px;
+    }
+    
+    .logo-highlight {
+        color: #3b82f6;
+    }
+    
+    .sidebar-nav {
+        padding: 0 12px;
+    }
+    
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        margin-bottom: 4px;
+        border-radius: 8px;
+        color: #a1a1aa;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #e4e4e7;
+    }
+    
+    .nav-item.active {
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    
+    .nav-icon {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+    
+    /* Main Content */
+    .main-content {
+        margin-left: 260px;
+        flex: 1;
+        min-height: 100vh;
+    }
+    
+    .top-bar {
+        background: rgba(10, 14, 26, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 16px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+    }
+    
+    .page-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+    }
+    
+    .update-info {
+        font-size: 12px;
+        color: #71717a;
+        margin-top: 4px;
+    }
+    
+    .hero {
+        padding: 60px 40px 40px;
+    }
+    
+    .hero-title {
+        font-size: 42px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+        color: #a1a1aa;
+        margin-bottom: 32px;
+    }
+    
+    .container {
+        padding: 0 40px 80px;
+    }
+    
+    .timeline {
+        display: grid;
+        gap: 18px;
+    }
+    
+    .event-card {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 24px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .event-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .event-card:hover {
+        border-color: rgba(59, 130, 246, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .event-card:hover::before {
+        opacity: 1;
+    }
+    
+    .event-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .event-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .company-badge {
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        padding: 5px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .country-badge {
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        border: 1px solid;
+    }
+    
+    .country-badge.aus {
+        background: rgba(34, 197, 94, 0.1);
+        color: #4ade80;
+        border-color: rgba(34, 197, 94, 0.2);
+    }
+    
+    .country-badge.kor {
+        background: rgba(168, 85, 247, 0.1);
+        color: #c084fc;
+        border-color: rgba(168, 85, 247, 0.2);
+    }
+    
+    .event-date {
+        color: #71717a;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .event-title {
+        font-size: 17px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    .event-content {
+        font-size: 14px;
+        color: #a1a1aa;
+        line-height: 1.7;
+    }
+    
+    .highlight {
+        color: #e4e4e7;
+        font-weight: 500;
+    }
+    
+    @media (max-width: 1024px) {
+        .sidebar {
+            transform: translateX(-100%);
+        }
+        
+        .main-content {
+            margin-left: 0;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-text">Space Industry <span class="logo-highlight">Intelligence</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                Dashboard
+            </a>
+            <a href="overview.html" class="nav-item">
+                <span class="nav-icon">🗺️</span>
+                Overview & Roadmap
+            </a>
+            <a href="trends.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                Global Trends
+            </a>
+            <a href="partnerships.html" class="nav-item">
+                <span class="nav-icon">🤝</span>
+                Partnerships
+            </a>
+            <a href="technologies.html" class="nav-item">
+                <span class="nav-icon">🔬</span>
+                Technologies
+            </a>
+            <a href="investment.html" class="nav-item active">
+                <span class="nav-icon">💰</span>
+                Investment
+            </a>
+            <a href="companies.html" class="nav-item">
+                <span class="nav-icon">🏢</span>
+                Companies
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">Investment & Funding Landscape</div>
+            <div class="update-info">Last Updated: 9 November 2025</div>
+        </div>
+
+        <div class="hero">
+            <div class="hero-title">Investment & Funding</div>
+            <div class="hero-subtitle">Government Programs, Private Capital & Strategic Initiatives</div>
+        </div>
+
+        <div class="container">
+            <div class="timeline">
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">Australia Space Infrastructure Fund</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2023-2027</div>
+                    </div>
+                    <div class="event-title">$19.5M Space Infrastructure Fund</div>
+                    <div class="event-content">
+                        Australian Government's dedicated fund supporting space industry infrastructure development. Focus on ground infrastructure, manufacturing capabilities, and mission support systems. Available for SMEs and startups to build sovereign capabilities.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">National Reconstruction Fund</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2023-2033</div>
+                    </div>
+                    <div class="event-title">$15B for Critical Technologies</div>
+                    <div class="event-content">
+                        <span class="highlight">$15 billion National Reconstruction Fund</span> with allocation for enabling technologies including space-related capabilities. Supporting advanced manufacturing, quantum technologies, AI, and robotics relevant to space sector.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">KASA Budget Growth</span>
+                            <span class="country-badge kor">Korea</span>
+                        </div>
+                        <div class="event-date">2023-2027</div>
+                    </div>
+                    <div class="event-title">₩874.2B Space Budget (+19.5% YoY)</div>
+                    <div class="event-content">
+                        2023 space budget reached <span class="highlight">₩874.2 billion (+19.5%)</span>. KASA 2025 R&D budget: <span class="highlight">₩806B (+43%)</span>, targeting ₩1.5T by 2027. Government-private matching space fund doubled. Aggressive investment supporting Top 5 space power ambition.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">KSLV-III Program</span>
+                            <span class="country-badge kor">Korea</span>
+                        </div>
+                        <div class="event-date">2025-2032</div>
+                    </div>
+                    <div class="event-title">₩2.1T Investment in Reusable Launch Vehicle</div>
+                    <div class="event-content">
+                        <span class="highlight">₩2.1 trillion investment through 2032</span> for KSLV-III reusable launch vehicle development. Hanwha Aerospace prime contractor. First launch 2030, targeting 20+ launches annually by 2035. Major R&D investment in propulsion, materials, guidance systems.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">Moon to Mars Initiative</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2021-2030</div>
+                    </div>
+                    <div class="event-title">Supply Chain Capability Grants</div>
+                    <div class="event-content">
+                        Australian Space Agency's Moon to Mars Supply Chain Capability Improvement Grant program. Supporting companies like HEO (Holmes imager - $700K+), developing technologies for lunar and deep space missions. Building sovereign lunar exploration capabilities.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">Private Sector Investment</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2019-2023</div>
+                    </div>
+                    <div class="event-title">$1.1B Private Capital Since 2019</div>
+                    <div class="event-content">
+                        <span class="highlight">$1.1 billion private sector investment</span> since 2019 driving Australian space industry growth. Venture capital, strategic investments, and international partnerships accelerating. Companies like Fleet Space, Gilmour Space securing major rounds.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">Total Australia Investment</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2018-2023</div>
+                    </div>
+                    <div class="event-title">$3B Total Space Industry Investment</div>
+                    <div class="event-content">
+                        Australia invested <span class="highlight">$3 billion in total</span> into space industry development from 2018-2023. Combination of government programs and private sector capital. Driving transformation from $8B market (2023) to $12B target by 2030.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">Visionary Machines Funding</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2024</div>
+                    </div>
+                    <div class="event-title">CIA Venture Capital + $4.4M Government Grant</div>
+                    <div class="event-content">
+                        Secured CIA venture capital (IQT) investment plus <span class="highlight">$4.4M Industry Growth Program grant</span> for Pandion Sentinel counter-drone commercialization. Total project value: <span class="highlight">$8.75M with matched funding</span>. Example of successful international and domestic funding combination.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">Cross-Border Opportunities</span>
+                            <span class="country-badge aus">Australia</span>
+                            <span class="country-badge kor">Korea</span>
+                        </div>
+                        <div class="event-date">2025-2027</div>
+                    </div>
+                    <div class="event-title">Bilateral Venture Capital & Startup Support</div>
+                    <div class="event-content">
+                        Opportunity to link Australia's <span class="highlight">Space Infrastructure Fund ($19.5M)</span> with Korea's government-private matching space fund (doubled by 2027). Cross-border venture capital for bilateral startup market entry, technology partnerships, and joint investment in emerging space technologies. Creating integrated Indo-Pacific space innovation ecosystem.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">HEO Moon to Mars Grant</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2024-2025</div>
+                    </div>
+                    <div class="event-title">$700K+ for Holmes Imager Development</div>
+                    <div class="event-content">
+                        HEO received <span class="highlight">$700K+ Moon to Mars Supply Chain Capability Grant</span> for Holmes imager development. Successfully launched on SpaceX Transporter-12 (January 2025). Demonstrates effectiveness of targeted government grants for critical space technologies.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">EOS Defence Contract</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">September 2024</div>
+                    </div>
+                    <div class="event-title">$9M ADF Space Capabilities Development</div>
+                    <div class="event-content">
+                        EOS Space Systems secured <span class="highlight">$9M contract</span> with Australian Defence Force Joint Capabilities Division. Developing space capabilities leveraging optical surveillance and high-energy laser technologies. Defense investment driving dual-use technology development.
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-meta">
+                            <span class="company-badge">EM Solutions Orders</span>
+                            <span class="country-badge aus">Australia</span>
+                        </div>
+                        <div class="event-date">2024</div>
+                    </div>
+                    <div class="event-title">$19M in International SATCOM Orders</div>
+                    <div class="event-content">
+                        EM Solutions secured <span class="highlight">$19M in orders</span> for King Cobra and Cobra satellite communication terminals. Customers include European NATO navies ($10M) and East Asian defense forces ($4M). Commercial export success demonstrating global competitiveness of Australian space technology.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
