@@ -192,8 +192,8 @@
     }
     
     .menu-card {
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%);
+        border: 1px solid rgba(59, 130, 246, 0.2);
         border-radius: 16px;
         padding: 32px;
         transition: all 0.3s ease;
@@ -201,6 +201,7 @@
         overflow: hidden;
         text-decoration: none;
         display: block;
+        cursor: pointer;
     }
     
     .menu-card::before {
@@ -216,9 +217,10 @@
     }
     
     .menu-card:hover {
-        border-color: rgba(59, 130, 246, 0.3);
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-color: rgba(59, 130, 246, 0.5);
+        transform: translateY(-6px);
+        box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.6) 100%);
     }
     
     .menu-card:hover::before {
@@ -235,6 +237,22 @@
         font-weight: 700;
         color: #fff;
         margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .card-title::after {
+        content: '→';
+        font-size: 24px;
+        color: #3b82f6;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-card:hover .card-title::after {
+        opacity: 1;
+        transform: translateX(4px);
     }
     
     .card-description {
@@ -347,7 +365,8 @@
 
         <div class="container">
             <section class="section">
-                <div class="section-title">Intelligence Modules</div>
+                <div class="section-title">📊 Quick Navigation</div>
+                <p style="color: #71717a; font-size: 14px; margin-bottom: 24px;">각 카드를 클릭하여 상세 정보를 확인하세요 • Click any card below to explore detailed intelligence</p>
                 
                 <div class="card-grid">
                     <a href="overview.html" class="menu-card">
