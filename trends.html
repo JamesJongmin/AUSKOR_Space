@@ -137,6 +137,28 @@
         padding: 0 40px 80px;
     }
     
+    .section {
+        margin-bottom: 60px;
+    }
+    
+    .section-header {
+        margin-bottom: 28px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    .section-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+    
+    .section-description {
+        font-size: 14px;
+        color: #71717a;
+    }
+    
     .timeline {
         display: grid;
         gap: 18px;
@@ -303,217 +325,285 @@
         </div>
 
         <div class="container">
-            <div class="timeline">
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Market Overview</span>
-                            <span class="trend-indicator">↗ GROWING</span>
+            <!-- MARKET OVERVIEW -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">💼 Market Overview & Economic Outlook</div>
+                    <div class="section-description">Industry size, growth projections, and economic indicators</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Market Size</span>
+                                <span class="trend-indicator">↗ GROWING</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
                         </div>
-                        <div class="event-date">2024-2025</div>
+                        <div class="event-title">$570B Global Space Economy Expanding to $1-2T by 2030-2040</div>
+                        <div class="event-content">
+                            Global space economy reached <span class="highlight">$570 billion in 2023</span>, up 7.4% YoY with 7.3% CAGR. Commercial revenues account for <span class="highlight">~80% of industry activity</span>. Projections: $600-750B by 2030 (conservative) or <span class="highlight">$1-2 trillion by 2040</span> (bullish). Government spending at $135B (2024) with 54% defense-related. Private sector driving innovation through increased investment and strategic public-private partnerships.
+                        </div>
                     </div>
-                    <div class="event-title">$570B Global Space Economy Expanding to $1-2T by 2030-2040</div>
-                    <div class="event-content">
-                        Global space economy reached <span class="highlight">$570 billion in 2023</span>, up 7.4% YoY with 7.3% CAGR. Commercial revenues account for <span class="highlight">~80% of industry activity</span>. Projections: $600-750B by 2030 (conservative) or <span class="highlight">$1-2 trillion by 2040</span> (bullish). Government spending at $135B (2024) with 54% defense-related. Private sector driving innovation through increased investment and strategic public-private partnerships.
+                    
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Investment Trends</span>
+                                <span class="trend-indicator">💸 MATURING</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">Space Industry Maturation: Record Exits, IPOs, Middle-Market Growth</div>
+                        <div class="event-content">
+                            <span class="highlight">More space company exits expected 2025</span>, fueling additional startup investment. Middle-market companies seeing record growth, preparing for exits. New financial vehicles and increasing public market investor interest accelerating sector. However: consolidation coming 2025-2030. Most efficient/reliable launchers (with government contracts) will survive. Others pivot or perish. Not all 100+ rockets in development will find sustainable market. Favorable economic winds supporting space startup ecosystem.
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Industry Sentiment</span>
+                                <span class="trend-indicator">🌟 OPTIMISTIC</span>
+                            </div>
+                            <div class="event-date">2025</div>
+                        </div>
+                        <div class="event-title">"Renaissance of Space" - Most Exciting Era in 30 Years</div>
+                        <div class="event-content">
+                            <span class="highlight">"If Apollo era was golden age, now we're in renaissance of space"</span> - Clay Mowry, AIAA CEO. "Most exciting time to be in space in 30 years I've been in industry." Despite economic/geopolitical uncertainty, excitement for final frontier remains strong. World Economic Forum predicts industry growth to $1.8T over next 11 years. 2025: pivotal year for space capabilities, regulatory developments, global engagement. Commercial space truly entering mainstream.
+                        </div>
                     </div>
                 </div>
+            </section>
+            
+            <!-- LAUNCH INDUSTRY -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">🚀 Launch Industry & Major Players</div>
+                    <div class="section-description">Launch vehicle development, market dynamics, and competitive landscape</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">SpaceX Dominance</span>
+                                <span class="trend-indicator hot">🔥 HOT</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">SpaceX: 138 Launches (87% US Market Share), Starship Game-Changer</div>
+                        <div class="event-content">
+                            SpaceX conducted <span class="highlight">138 of 145 US orbital launches in 2024</span>, maintaining overwhelming market dominance. <span class="highlight">Starship approved for 25+ launches in 2025</span> by FAA. Potential disruption: <$1,000/kg to LEO (currently <$3k on Falcon 9, down from $20k in early 2000s). Private valuation: <span class="highlight">~$350 billion</span> (6x NASA's annual budget). Starlink constellation: 6,500+ satellites operational. On-orbit fuel transfer demonstration planned 2025 for Artemis lunar missions.
+                        </div>
+                    </div>
 
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">SpaceX Dominance</span>
-                            <span class="trend-indicator hot">🔥 HOT</span>
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Competition Rising</span>
+                                <span class="trend-indicator">📈 EMERGING</span>
+                            </div>
+                            <div class="event-date">2025</div>
                         </div>
-                        <div class="event-date">2024-2025</div>
+                        <div class="event-title">Blue Origin, Rocket Lab, ULA Challenge SpaceX Monopoly</div>
+                        <div class="event-content">
+                            <span class="highlight">Blue Origin's New Glenn</span> heavy-lift reusable rocket maiden flight expected Q1 2025. <span class="highlight">Rocket Lab's Neutron</span> targeting late 2025 to compete with Falcon 9. <span class="highlight">ULA's Vulcan Centaur</span> certification for National Security missions. Western space industry "uncomfortably dependent" on SpaceX, creating urgency for alternatives. If rivals fail to meet launch cadence, satellite operators' growth plans face delays.
+                        </div>
                     </div>
-                    <div class="event-title">SpaceX: 138 Launches (87% US Market Share), Starship Game-Changer</div>
-                    <div class="event-content">
-                        SpaceX conducted <span class="highlight">138 of 145 US orbital launches in 2024</span>, maintaining overwhelming market dominance. <span class="highlight">Starship approved for 25+ launches in 2025</span> by FAA. Potential disruption: <$1,000/kg to LEO (currently <$3k on Falcon 9, down from $20k in early 2000s). Private valuation: <span class="highlight">~$350 billion</span> (6x NASA's annual budget). Starlink constellation: 6,500+ satellites operational. On-orbit fuel transfer demonstration planned 2025 for Artemis lunar missions.
-                    </div>
-                </div>
 
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Competition Rising</span>
-                            <span class="trend-indicator">📈 EMERGING</span>
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">China Rising</span>
+                                <span class="trend-indicator hot">🚀 RAPID</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
                         </div>
-                        <div class="event-date">2025</div>
+                        <div class="event-title">China: 68 Launches, Thousands Sails Constellation, 2030 Lunar Landing</div>
+                        <div class="event-content">
+                            China performed <span class="highlight">68 orbital launches in 2024</span>, second only to US. <span class="highlight">Thousands Sails Constellation</span> plans 648 satellites by end of 2025. Active space station operational. Announced <span class="highlight">2030 crewed lunar landing</span>. Startups developing reusable rockets: Space Pioneer's Tianlong-3, Cosmoleap's Yueqian with "chopstick clamp" recovery (SpaceX-style). LandSpace's Zhuque-2: world's first methane-fueled orbital rocket (2023). "Moving fast with capital behind them, will undercut US/European prices."
+                        </div>
                     </div>
-                    <div class="event-title">Blue Origin, Rocket Lab, ULA Challenge SpaceX Monopoly</div>
-                    <div class="event-content">
-                        <span class="highlight">Blue Origin's New Glenn</span> heavy-lift reusable rocket maiden flight expected Q1 2025. <span class="highlight">Rocket Lab's Neutron</span> targeting late 2025 to compete with Falcon 9. <span class="highlight">ULA's Vulcan Centaur</span> certification for National Security missions. Western space industry "uncomfortably dependent" on SpaceX, creating urgency for alternatives. If rivals fail to meet launch cadence, satellite operators' growth plans face delays.
-                    </div>
-                </div>
 
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">China Rising</span>
-                            <span class="trend-indicator hot">🚀 RAPID</span>
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Launch Costs</span>
+                                <span class="trend-indicator">💰 PLUMMETING</span>
+                            </div>
+                            <div class="event-date">2000s-2025</div>
                         </div>
-                        <div class="event-date">2024-2025</div>
+                        <div class="event-title">95% Cost Reduction: $20K → <$1K per kg to LEO</div>
+                        <div class="event-content">
+                            Reusable launch technology driving dramatic cost decline: ~$20,000/kg (early 2000s) → <span class="highlight"><$3,000/kg on Falcon 9</span> → <$1,000/kg projected on Starship. Falcon 9 single booster flown <span class="highlight">20+ times</span>. Blue Origin, Rocket Lab pursuing reusability. Starship's 100+ ton capacity could deliver "entire annual smallsat output in few launches." Risk: capacity glut making small launchers obsolete. Counterpoint: new applications will emerge (space tourism, industrial projects, lunar infrastructure).
+                        </div>
                     </div>
-                    <div class="event-title">China: 68 Launches, Thousands Sails Constellation, 2030 Lunar Landing</div>
-                    <div class="event-content">
-                        China performed <span class="highlight">68 orbital launches in 2024</span>, second only to US. <span class="highlight">Thousands Sails Constellation</span> plans 648 satellites by end of 2025. Active space station operational. Announced <span class="highlight">2030 crewed lunar landing</span>. Startups developing reusable rockets: Space Pioneer's Tianlong-3, Cosmoleap's Yueqian with "chopstick clamp" recovery (SpaceX-style). LandSpace's Zhuque-2: world's first methane-fueled orbital rocket (2023). "Moving fast with capital behind them, will undercut US/European prices."
-                    </div>
-                </div>
 
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Mega-Constellations</span>
-                            <span class="trend-indicator">📡 EXPLOSIVE</span>
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">New Space Nations</span>
+                                <span class="trend-indicator">🌏 GLOBAL</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
                         </div>
-                        <div class="event-date">2024-2025</div>
-                    </div>
-                    <div class="event-title">11,539 Satellites in Orbit (3.4x Growth Since 2020)</div>
-                    <div class="event-content">
-                        Operational satellites exploded from <span class="highlight">3,371 (2020) to 11,539 (2024)</span> - threefold in four years. Major constellations: Starlink (6,500+), OneWeb (600+), Amazon Kuiper (3,000+ planned from 2025). Euroconsult projects <span class="highlight">18,000+ smallsats 2024-2033</span>. Paradigm shift: few large satellites → swarms of many. Benefits: resilience, global coverage, short revisit times. Concerns: crowded orbits, interference, space debris requiring automated collision avoidance.
+                        <div class="event-title">India, Japan, UAE, Others Joining Commercial Space Race</div>
+                        <div class="event-content">
+                            <span class="highlight">India: 5 launches in 2024</span>, Skyroot Aerospace (first private rocket November 2022), Vikram-1 orbital vehicle development. <span class="highlight">Rocket Lab (New Zealand): 13 launches in 2024</span>. Europe struggling: only 3 launches (Ariane 6 delays), startups Isar Aerospace, Rocket Factory Augsburg, Orbex funded with €45M. Russia: 21 launches. Commercial space activity now truly global, more countries joining 2025 with new national programs and startups.
+                        </div>
                     </div>
                 </div>
+            </section>
+            
+            <!-- SATELLITE CONSTELLATIONS -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">🛰️ Satellite Constellations & Communications</div>
+                    <div class="section-description">Mega-constellations, direct-to-device services, and satellite broadband</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Mega-Constellations</span>
+                                <span class="trend-indicator">📡 EXPLOSIVE</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">11,539 Satellites in Orbit (3.4x Growth Since 2020)</div>
+                        <div class="event-content">
+                            Operational satellites exploded from <span class="highlight">3,371 (2020) to 11,539 (2024)</span> - threefold in four years. Major constellations: Starlink (6,500+), OneWeb (600+), Amazon Kuiper (3,000+ planned from 2025). Euroconsult projects <span class="highlight">18,000+ smallsats 2024-2033</span>. Paradigm shift: few large satellites → swarms of many. Benefits: resilience, global coverage, short revisit times. Concerns: crowded orbits, interference, space debris requiring automated collision avoidance.
+                        </div>
+                    </div>
 
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Direct-to-Device</span>
-                            <span class="trend-indicator hot">🔥 BREAKTHROUGH</span>
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Direct-to-Device</span>
+                                <span class="trend-indicator hot">🔥 BREAKTHROUGH</span>
+                            </div>
+                            <div class="event-date">2025</div>
                         </div>
-                        <div class="event-date">2025</div>
-                    </div>
-                    <div class="event-title">D2D: "Holy Grail" - Satellites Connecting Directly to Smartphones</div>
-                    <div class="event-content">
-                        <span class="highlight">Direct-to-Device (D2D)</span> becoming reality, "next great holy grail for industry." Satellite operators targeting <span class="highlight">billions of mobile terrestrial devices</span> for first time. Partnerships: Skylo with Verizon and Google. 2025: devices working in satellite/cellular modes becoming ubiquitous (IoT sensors, dongles, smartphones). AST SpaceMobile Block 2 BlueBird satellites launching. Revolutionary for remote/rural connectivity.
+                        <div class="event-title">D2D: "Holy Grail" - Satellites Connecting Directly to Smartphones</div>
+                        <div class="event-content">
+                            <span class="highlight">Direct-to-Device (D2D)</span> becoming reality, "next great holy grail for industry." Satellite operators targeting <span class="highlight">billions of mobile terrestrial devices</span> for first time. Partnerships: Skylo with Verizon and Google. 2025: devices working in satellite/cellular modes becoming ubiquitous (IoT sensors, dongles, smartphones). AST SpaceMobile Block 2 BlueBird satellites launching. Revolutionary for remote/rural connectivity.
+                        </div>
                     </div>
                 </div>
+            </section>
+            
+            <!-- LUNAR & DEEP SPACE -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">🌙 Lunar & Deep Space Exploration</div>
+                    <div class="section-description">Artemis program, lunar economy, and international moon race</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Lunar Economy</span>
+                                <span class="trend-indicator">🌙 ACCELERATING</span>
+                            </div>
+                            <div class="event-date">2025-2030</div>
+                        </div>
+                        <div class="event-title">NASA Artemis vs China: New Moon Race Heating Up</div>
+                        <div class="event-content">
+                            NASA <span class="highlight">Artemis II crewed lunar flyby: September 2025</span>, Artemis III landing: September 2026 (delayed 1 year). SpaceX Starship HLS lander for Artemis III/IV, Blue Origin's Blue Moon for Artemis V. China targeting <span class="highlight">2030 crewed lunar landing</span>, completed tests of new crew rocket/lander. Intuitive Machines' Nova-C reached Moon's south pole (2025), first US private lunar landing. Japan's SLIM, India's progress expanding global lunar capabilities.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- DEFENSE & NATIONAL SECURITY -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">🛡️ Defense & National Security</div>
+                    <div class="section-description">Military space capabilities, proliferated LEO, and space domain awareness</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Space Defense</span>
+                                <span class="trend-indicator">🛡️ CRITICAL</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">US Space Development Agency: $4.3B for Proliferated LEO Defense</div>
+                        <div class="event-content">
+                            SDA's <span class="highlight">$4.3B FY25 budget</span> for Tranches 2/3 of Proliferated Warfighter Space Architecture (PWSA). LEO satellite network for <span class="highlight">advanced missile detection and tracking</span>. Aggressive cadence: 11 launches in 11 months. Proliferated LEO makes National Security constellations "more resilient and easier to replenish." Growing threats: counterspace operations, physical/cyber risks to satellites now operational reality.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- EMERGING APPLICATIONS -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">✨ Emerging Applications & Technologies</div>
+                    <div class="section-description">Space tourism, sustainability, and novel use cases</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Space Tourism</span>
+                                <span class="trend-indicator">✈️ EMERGING</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
+                        </div>
+                        <div class="event-title">Commercial Spaceflight: Blue Origin, Virgin Galactic, SpaceX Missions</div>
+                        <div class="event-content">
+                            <span class="highlight">Blue Origin's New Shepard</span>: proven suborbital tourism record. <span class="highlight">Axiom Space-SpaceX ISS missions</span>: ~$55M per seat for week-long stay. SpaceX planning multi-day orbital vacations. Virgin Galactic continuing suborbital flights. Luxury travel companies exploring space tourism packages. Emerging business models: training programs, virtual space travel, high-altitude experiences. Space tourism no longer fantasy but growing industry.
+                        </div>
+                    </div>
 
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Lunar Economy</span>
-                            <span class="trend-indicator">🌙 ACCELERATING</span>
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Space Sustainability</span>
+                                <span class="trend-indicator">⚠️ URGENT</span>
+                            </div>
+                            <div class="event-date">2024-2025</div>
                         </div>
-                        <div class="event-date">2025-2030</div>
-                    </div>
-                    <div class="event-title">NASA Artemis vs China: New Moon Race Heating Up</div>
-                    <div class="event-content">
-                        NASA <span class="highlight">Artemis II crewed lunar flyby: September 2025</span>, Artemis III landing: September 2026 (delayed 1 year). SpaceX Starship HLS lander for Artemis III/IV, Blue Origin's Blue Moon for Artemis V. China targeting <span class="highlight">2030 crewed lunar landing</span>, completed tests of new crew rocket/lander. Intuitive Machines' Nova-C reached Moon's south pole (2025), first US private lunar landing. Japan's SLIM, India's progress expanding global lunar capabilities.
+                        <div class="event-title">Space Debris Crisis: 11,000+ Satellites Demand New Solutions</div>
+                        <div class="event-content">
+                            Rapid satellite growth creating major debris problem. Threat to spacecraft, satellites, future missions. Space agencies and private firms developing <span class="highlight">debris removal technologies, AI-driven tracking, collision-avoidance systems</span>. Emerging market: space sustainability. Governments introducing regulations. Automated collision avoidance becoming standard. New approaches to traffic management and satellite design required for crowded orbits.
+                        </div>
                     </div>
                 </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Space Defense</span>
-                            <span class="trend-indicator">🛡️ CRITICAL</span>
+            </section>
+            
+            <!-- REGULATORY & POLICY -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-title">📋 Regulatory Evolution & Policy</div>
+                    <div class="section-description">Government policies, regulatory frameworks, and international cooperation</div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-meta">
+                                <span class="company-badge">Regulatory Evolution</span>
+                                <span class="trend-indicator">📋 CHANGING</span>
+                            </div>
+                            <div class="event-date">February 2025</div>
                         </div>
-                        <div class="event-date">2024-2025</div>
-                    </div>
-                    <div class="event-title">US Space Development Agency: $4.3B for Proliferated LEO Defense</div>
-                    <div class="event-content">
-                        SDA's <span class="highlight">$4.3B FY25 budget</span> for Tranches 2/3 of Proliferated Warfighter Space Architecture (PWSA). LEO satellite network for <span class="highlight">advanced missile detection and tracking</span>. Aggressive cadence: 11 launches in 11 months. Proliferated LEO makes National Security constellations "more resilient and easier to replenish." Growing threats: counterspace operations, physical/cyber risks to satellites now operational reality.
+                        <div class="event-title">US Executive Orders: Reducing Regulatory Friction for Commercial Space</div>
+                        <div class="event-content">
+                            President Trump's <span class="highlight">February 2025 executive orders</span> aimed at reducing regulatory friction and modernizing legacy space policies. Could create additional momentum for commercial ventures and infrastructure development. Goals: Mars missions, deep-space exploration. Governments redefining space strategies, regulatory frameworks, funding priorities to support commercial expansion. Public-private partnerships crucial for advancing human/robotic presence beyond Earth orbit.
+                        </div>
                     </div>
                 </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Launch Costs</span>
-                            <span class="trend-indicator">💰 PLUMMETING</span>
-                        </div>
-                        <div class="event-date">2000s-2025</div>
-                    </div>
-                    <div class="event-title">95% Cost Reduction: $20K → <$1K per kg to LEO</div>
-                    <div class="event-content">
-                        Reusable launch technology driving dramatic cost decline: ~$20,000/kg (early 2000s) → <span class="highlight"><$3,000/kg on Falcon 9</span> → <$1,000/kg projected on Starship. Falcon 9 single booster flown <span class="highlight">20+ times</span>. Blue Origin, Rocket Lab pursuing reusability. Starship's 100+ ton capacity could deliver "entire annual smallsat output in few launches." Risk: capacity glut making small launchers obsolete. Counterpoint: new applications will emerge (space tourism, industrial projects, lunar infrastructure).
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">New Space Nations</span>
-                            <span class="trend-indicator">🌏 GLOBAL</span>
-                        </div>
-                        <div class="event-date">2024-2025</div>
-                    </div>
-                    <div class="event-title">India, Japan, UAE, Others Joining Commercial Space Race</div>
-                    <div class="event-content">
-                        <span class="highlight">India: 5 launches in 2024</span>, Skyroot Aerospace (first private rocket November 2022), Vikram-1 orbital vehicle development. <span class="highlight">Rocket Lab (New Zealand): 13 launches in 2024</span>. Europe struggling: only 3 launches (Ariane 6 delays), startups Isar Aerospace, Rocket Factory Augsburg, Orbex funded with €45M. Russia: 21 launches. Commercial space activity now truly global, more countries joining 2025 with new national programs and startups.
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Space Tourism</span>
-                            <span class="trend-indicator">✈️ EMERGING</span>
-                        </div>
-                        <div class="event-date">2024-2025</div>
-                    </div>
-                    <div class="event-title">Commercial Spaceflight: Blue Origin, Virgin Galactic, SpaceX Missions</div>
-                    <div class="event-content">
-                        <span class="highlight">Blue Origin's New Shepard</span>: proven suborbital tourism record. <span class="highlight">Axiom Space-SpaceX ISS missions</span>: ~$55M per seat for week-long stay. SpaceX planning multi-day orbital vacations. Virgin Galactic continuing suborbital flights. Luxury travel companies exploring space tourism packages. Emerging business models: training programs, virtual space travel, high-altitude experiences. Space tourism no longer fantasy but growing industry.
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Space Sustainability</span>
-                            <span class="trend-indicator">⚠️ URGENT</span>
-                        </div>
-                        <div class="event-date">2024-2025</div>
-                    </div>
-                    <div class="event-title">Space Debris Crisis: 11,000+ Satellites Demand New Solutions</div>
-                    <div class="event-content">
-                        Rapid satellite growth creating major debris problem. Threat to spacecraft, satellites, future missions. Space agencies and private firms developing <span class="highlight">debris removal technologies, AI-driven tracking, collision-avoidance systems</span>. Emerging market: space sustainability. Governments introducing regulations. Automated collision avoidance becoming standard. New approaches to traffic management and satellite design required for crowded orbits.
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Regulatory Evolution</span>
-                            <span class="trend-indicator">📋 CHANGING</span>
-                        </div>
-                        <div class="event-date">February 2025</div>
-                    </div>
-                    <div class="event-title">US Executive Orders: Reducing Regulatory Friction for Commercial Space</div>
-                    <div class="event-content">
-                        President Trump's <span class="highlight">February 2025 executive orders</span> aimed at reducing regulatory friction and modernizing legacy space policies. Could create additional momentum for commercial ventures and infrastructure development. Goals: Mars missions, deep-space exploration. Governments redefining space strategies, regulatory frameworks, funding priorities to support commercial expansion. Public-private partnerships crucial for advancing human/robotic presence beyond Earth orbit.
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Investment Trends</span>
-                            <span class="trend-indicator">💸 MATURING</span>
-                        </div>
-                        <div class="event-date">2024-2025</div>
-                    </div>
-                    <div class="event-title">Space Industry Maturation: Record Exits, IPOs, Middle-Market Growth</div>
-                    <div class="event-content">
-                        <span class="highlight">More space company exits expected 2025</span>, fueling additional startup investment. Middle-market companies seeing record growth, preparing for exits. New financial vehicles and increasing public market investor interest accelerating sector. However: consolidation coming 2025-2030. Most efficient/reliable launchers (with government contracts) will survive. Others pivot or perish. Not all 100+ rockets in development will find sustainable market. Favorable economic winds supporting space startup ecosystem.
-                    </div>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-header">
-                        <div class="event-meta">
-                            <span class="company-badge">Industry Sentiment</span>
-                            <span class="trend-indicator">🌟 OPTIMISTIC</span>
-                        </div>
-                        <div class="event-date">2025</div>
-                    </div>
-                    <div class="event-title">"Renaissance of Space" - Most Exciting Era in 30 Years</div>
-                    <div class="event-content">
-                        <span class="highlight">"If Apollo era was golden age, now we're in renaissance of space"</span> - Clay Mowry, AIAA CEO. "Most exciting time to be in space in 30 years I've been in industry." Despite economic/geopolitical uncertainty, excitement for final frontier remains strong. World Economic Forum predicts industry growth to $1.8T over next 11 years. 2025: pivotal year for space capabilities, regulatory developments, global engagement. Commercial space truly entering mainstream.
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
     </div>
 </body>
